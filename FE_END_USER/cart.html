@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Cart - NiceShop Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="cart-page">
+
+  <header id="header" class="header sticky-top">
+    <!-- Top Bar -->
+    <div class="top-bar py-1">
+      <div class="container-fluid container-xl">
+        <div class="row align-items-center">
+          <div class="col-lg-4 d-none d-lg-flex">
+            <div class="top-bar-item">
+              <i class="bi bi-telephone-fill me-2"></i>
+              <span>Quý khách cần hỗ trợ? Vul lòng gọi: </span>
+              <a href="tel:+1234567890">0376 000 333</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 text-center">
+            <div class="announcement-slider swiper init-swiper">
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 3000
+                  },
+                  "slidesPerView": 1,
+                  "direction": "vertical",
+                  "effect": "slide"
+                }
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">🚚 Miễn phí vận chuyển cho đơn hàng trên 500.000đ</div>
+                <div class="swiper-slide">💰 Chính sách hoàn tiền trong 30 ngày</div>
+                <div class="swiper-slide">🎁 Ưu đãi 20% cho đơn hàng đầu tiên</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container-fluid container-xl">
+        <div class="d-flex py-3 align-items-center justify-content-between">
+
+          <!-- Logo -->
+          <a href="index.html" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.webp" alt=""> -->
+            <h1 class="sitename">LTECH STORE</h1>
+          </a>
+
+          <!-- Search -->
+          <form class="search-form desktop-search-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+              <button class="btn" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <!-- Actions -->
+          <div class="header-actions d-flex align-items-center justify-content-end">
+
+            <!-- Mobile Search Toggle -->
+            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
+              <i class="bi bi-search"></i>
+            </button>
+
+            <!-- Account -->
+            <div class="dropdown account-dropdown">
+              <button class="header-action-btn" data-bs-toggle="dropdown">
+                <i class="bi bi-person"></i>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-header">
+                  <h6>Chào mừng tới <span class="sitename">LTech Store</span></h6>
+                  <p class="mb-0">Truy cập tài khoản &amp; Quản lý đơn hàng</p>
+                </div>
+                <div class="dropdown-body">
+                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                    <i class="bi bi-person-circle me-2"></i>
+                    <span>Hồ sơ</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                    <i class="bi bi-bag-check me-2"></i>
+                    <span>Đơn hàng</span>
+                  </a>
+                  <!-- <a class="dropdown-item d-flex align-items-center" href="account.html">
+                    <i class="bi bi-heart me-2"></i>
+                    <span>Yêu thích</span>
+                  </a> -->
+                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                    <i class="bi bi-gear me-2"></i>
+                    <span>Cài đặt</span>
+                  </a>
+                </div>
+                <div class="dropdown-footer">
+                  <a href="register.html" class="btn btn-primary w-100 mb-2">Đăng ký</a>
+                  <a href="login.html" class="btn btn-outline-primary w-100">Đăng nhập</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cart -->
+            <a href="cart.html" class="header-action-btn">
+              <i class="bi bi-cart3"></i>
+              <span class="badge">3</span>
+            </a>
+
+            <!-- Mobile Navigation Toggle -->
+            <i class="mobile-nav-toggle d-xl-none bi bi-list me-0"></i>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="header-nav">
+      <div class="container-fluid container-xl position-relative">
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="category.html">Danh mục</a></li>
+            <li class="dropdown"><a href="#"><span>Sản phẩm</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Điện thoại</a></li>
+                <li><a href="#">Máy tính bảng</a></li>
+                <li><a href="#">Laptop</a></li>
+                <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="#">Tai nghe</a></li>
+                    <li><a href="#">Củ sạc</a></li>
+                    <li><a href="#">Cáp sạc</a></li>
+                    <li><a href="#">Bàn phím</a></li>
+                    <li><a href="#">Chuột</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown"><a href="#"><span>Thương hiệu</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Apple</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Oppo</a></li>
+                <li><a href="#">Realme</a></li>
+                <li><a href="#">Vivo</a></li>
+              </ul>
+            </li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+            <li><a href="support.html">Hỗ trợ</a></li>
+            <li><a href="contact.html">Liên hệ</a></li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Mobile Search Form -->
+    <div class="collapse" id="mobileSearch">
+      <div class="container">
+        <form class="search-form">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for products">
+            <button class="btn" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Giỏ hàng</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li class="current">Giỏ hàng</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="cart-items">
+              <div class="cart-header d-none d-lg-block">
+                <div class="row align-items-center">
+                  <div class="col-lg-6">
+                    <h5>Sản phẩm</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Đơn giá</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Số lượng</h5>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <h5>Thành tiền</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cart-item-container">
+                <!-- Cart Item -->
+                <!-- <div class="cart-item">
+                  <div class="row align-items-center">
+                    <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                      <div class="product-info d-flex align-items-center">
+                        <div class="product-image">
+                          <img src="assets/img/product/product-3.webp" alt="Product" class="img-fluid" loading="lazy">
+                        </div>
+                        <div class="product-details">
+                          <h6 class="product-title">Consectetur adipiscing elit</h6>
+                          <div class="product-meta">
+                            <span class="product-color">Màu: White</span>
+                          </div>
+                          <button class="remove-item" type="button">
+                            <i class="bi bi-trash"></i> Xóa
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                      <div class="price-tag">
+                        <span class="current-price">$64.99</span>
+                        <span class="original-price">$79.99</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                      <div class="quantity-selector">
+                        <button class="quantity-btn decrease">
+                          <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="number" class="quantity-input" value="2" min="1" max="10">
+                        <button class="quantity-btn increase">
+                          <i class="bi bi-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                      <div class="item-total">
+                        <span>$129.98</span>
+                      </div>
+                    </div>
+                  </div>
+                </div> End Cart Item -->
+              </div>
+
+              <div class="cart-actions">
+                <div class="row">
+                  <div class="col-lg-6 mb-3 mb-lg-0">
+                    <!-- <div class="coupon-form">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Mã giảm giá">
+                        <button class="btn btn-outline-accent" type="button">Áp dụng</button>
+                      </div>
+                    </div> -->
+                  </div>
+                  <div class="col-lg-6 text-md-end">
+                    <button class="btn btn-outline-heading btn-update-cart me-2">
+                      <i class="bi bi-arrow-clockwise"></i> Cập nhật giỏ hàng
+                    </button>
+                    <button class="btn btn-outline-remove btn-delete-cart">
+                      <i class="bi bi-trash"></i> Xóa giỏ hàng
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="cart-summary">
+              <h4 class="summary-title">Tóm tắt đơn hàng</h4>
+
+              <div class="summary-item">
+                <span class="summary-label">Tổng tiền sản phẩm</span>
+                <span class="summary-value total-product">15.400.000đ</span>
+              </div>
+
+              <div class="summary-item shipping-item">
+                <span class="summary-label">Phí vận chuyển</span>
+                <span class="summary-value">Miễn phí</span>
+                <!-- <div class="shipping-options">
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="standard" checked="">
+                    <label class="form-check-label" for="standard">
+                      Standard Delivery - $4.99
+                    </label>
+                  </div>
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="express">
+                    <label class="form-check-label" for="express">
+                      Express Delivery - $12.99
+                    </label>
+                  </div>
+                  <div class="form-check text-end">
+                    <input class="form-check-input" type="radio" name="shipping" id="free">
+                    <label class="form-check-label" for="free">
+                      Miễn phí
+                    </label>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="summary-total">
+                <span class="summary-label">Thành tiền</span>
+                <span class="summary-value total-cart">15.400.000đ</span>
+              </div>
+
+              <div class="checkout-button">
+                <a href="checkout.html" class="btn btn-accent w-100">
+                  Tiến hành thanh toán <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="continue-shopping">
+                <a href="#" class="btn btn-link w-100">
+                  <i class="bi bi-arrow-left"></i> Tiếp tục mua sắm
+                </a>
+              </div>
+
+              <div class="payment-methods">
+                <p class="payment-title">We Accept</p>
+                <div class="payment-icons">
+                  <i class="bi bi-credit-card"></i>
+                  <i class="bi bi-paypal"></i>
+                  <i class="bi bi-wallet2"></i>
+                  <i class="bi bi-bank"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Cart Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="footer-main">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-widget footer-about">
+              <a href="index.html" class="logo">
+                <span class="sitename">NiceShop</span>
+              </a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
+
+              <div class="social-links mt-4">
+                <h5>Connect With Us</h5>
+                <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                  <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                  <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h4>Shop</h4>
+              <ul class="footer-links">
+                <li><a href="category.html">New Arrivals</a></li>
+                <li><a href="category.html">Bestsellers</a></li>
+                <li><a href="category.html">Women's Clothing</a></li>
+                <li><a href="category.html">Men's Clothing</a></li>
+                <li><a href="category.html">Accessories</a></li>
+                <li><a href="category.html">Sale</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h4>Support</h4>
+              <ul class="footer-links">
+                <li><a href="support.html">Help Center</a></li>
+                <li><a href="account.html">Order Status</a></li>
+                <li><a href="shiping-info.html">Shipping Info</a></li>
+                <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
+                <li><a href="#">Size Guide</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-widget">
+              <h4>Contact Information</h4>
+              <div class="footer-contact">
+                <div class="contact-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>123 Fashion Street, New York, NY 10001</span>
+                </div>
+                <div class="contact-item">
+                  <i class="bi bi-telephone"></i>
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                  <i class="bi bi-envelope"></i>
+                  <span>hello@example.com</span>
+                </div>
+                <div class="contact-item">
+                  <i class="bi bi-clock"></i>
+                  <span>Monday-Friday: 9am-6pm<br>Saturday: 10am-4pm<br>Sunday: Closed</span>
+                </div>
+              </div>
+
+              <div class="app-buttons mt-4">
+                <a href="#" class="app-btn">
+                  <i class="bi bi-apple"></i>
+                  <span>App Store</span>
+                </a>
+                <a href="#" class="app-btn">
+                  <i class="bi bi-google-play"></i>
+                  <span>Google Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row gy-3 align-items-center">
+          <div class="col-lg-6 col-md-12">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="sitename">NiceShop</strong>. All Rights Reserved.</p>
+            </div>
+            <div class="credits mt-1">
+              <!-- All the links in the footer should remain intact. -->
+              <!-- You can delete the links only if you've purchased the pro version. -->
+              <!-- Licensing information: https://bootstrapmade.com/license/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+            <div class="d-flex flex-wrap justify-content-lg-end justify-content-center align-items-center gap-4">
+              <div class="payment-methods">
+                <div class="payment-icons">
+                  <i class="bi bi-credit-card" aria-label="Credit Card"></i>
+                  <i class="bi bi-paypal" aria-label="PayPal"></i>
+                  <i class="bi bi-apple" aria-label="Apple Pay"></i>
+                  <i class="bi bi-google" aria-label="Google Pay"></i>
+                  <i class="bi bi-shop" aria-label="Shop Pay"></i>
+                  <i class="bi bi-cash" aria-label="Cash on Delivery"></i>
+                </div>
+              </div>
+
+              <div class="legal-links">
+                <a href="tos.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="tos.html">Cookies</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+
+      const token = localStorage.getItem("token");
+
+      //Lấy giỏ hàng
+      async function fetchCart() {
+        const response = await fetch("http://localhost:8080/tech-store/api/carts", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        return await response.json();
+      }
+
+      //Cập nhật số lượng
+      async function updateQuantity(cartItemId, quantity) {
+        await fetch(`http://localhost:8080/tech-store/api/cart-item/${cartItemId}?quantity=${quantity}`, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        renderCart();
+      }
+
+      //Xóa sản phẩm
+      async function removeItem(cartItemId) {
+        await fetch(`http://localhost:8080/tech-store/api/cart-item/${cartItemId}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        renderCart();
+      }
+
+      //Render giỏ hàng
+      async function renderCart() {
+        const result = await fetchCart();
+        if (result.code !== 1000) return;
+
+        const cart = result.result;
+        const container = document.querySelector(".cart-item-container");
+        container.innerHTML = "";
+
+        cart.cartItems.forEach(item => {
+          const html = `
+            <div class="cart-item" data-id="${item.cartItemId}">
+              <div class="row align-items-center">
+
+                <div class="col-lg-6 col-12 mt-3 mt-lg-0 mb-lg-0 mb-3">
+                  <div class="product-info d-flex align-items-center">
+                    <div class="product-image">
+                      <img src="${item.productImageUrl}" alt="${item.productName}" class="img-fluid">
+                    </div>
+                    <div class="product-details">
+                      <h6 class="product-title">${item.productName}</h6>
+                      <div class="product-meta">
+                        <span class="product-color">Màu: ${item.color}</span>
+                      </div>
+                      <button class="remove-item" data-id="${item.cartItemId}">
+                        <i class="bi bi-trash"></i> Xóa
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                  <div class="price-tag">
+                    <span class="current-price">${item.promotionalPrice.toLocaleString()}đ</span>
+                    <span class="original-price">${item.originalPrice.toLocaleString()}đ</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                  <div class="quantity-selector">
+                    <button class="quantity-btn decrease" data-id="${item.cartItemId}"><i class="bi bi-dash"></i></button>
+                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="100" data-id="${item.cartItemId}">
+                    <button class="quantity-btn increase" data-id="${item.cartItemId}"><i class="bi bi-plus"></i></button>
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-12 mt-3 mt-lg-0 text-center">
+                  <div class="item-total"><span>${item.subTotal.toLocaleString()}đ</span></div>
+                </div>
+
+              </div>
+            </div>`;
+          container.insertAdjacentHTML("beforeend", html);
+        });
+
+        //Cập nhật tổng tiền
+        document.querySelector(".total-product").textContent = cart.total.toLocaleString() + "đ";
+        document.querySelector(".total-cart").textContent = cart.total.toLocaleString() + "đ";
+
+        //Tăng số lượng
+        document.querySelectorAll(".increase").forEach(btn => {
+          btn.onclick = () => {
+            const input = btn.parentElement.querySelector(".quantity-input");
+            input.value = Number(input.value) + 1;
+            updateQuantity(btn.dataset.id, input.value);
+          };
+        });
+
+        //Giảm số lượng (không giảm <1)
+        document.querySelectorAll(".decrease").forEach(btn => {
+          btn.onclick = () => {
+            const input = btn.parentElement.querySelector(".quantity-input");
+            if (input.value > 1) {
+              input.value = Number(input.value) - 1;
+              updateQuantity(btn.dataset.id, input.value);
+            }
+          };
+        });
+
+        //Nhập trực tiếp số lượng
+        document.querySelectorAll(".quantity-input").forEach(input => {
+          input.onchange = () => {
+            if (input.value < 1) input.value = 1;
+            updateQuantity(input.dataset.id, input.value);
+          };
+        });
+
+        //Xóa sản phẩm
+        document.querySelectorAll(".remove-item").forEach(btn => {
+          btn.onclick = () => removeItem(btn.dataset.id);
+        });
+
+        //Nút Cập nhật giỏ hàng
+        document.querySelector(".btn-update-cart").onclick = () => {
+          renderCart();
+        };
+  
+        // Nút Xóa giỏ hàng
+        document.querySelector(".btn-delete-cart").onclick = async () => {
+          await fetch("http://localhost:8080/tech-store/api/carts", {
+            method: "DELETE",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+          renderCart();
+        };
+      }
+
+
+      //Khởi chạy lần đầu
+      renderCart();
+
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /tech-store
+
+spring:
+  #Kết nối tới database
+  datasource:
+    url: "jdbc:mysql://localhost:3306/tech_store_db_test"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    username: root
+    password:
+  jpa:
+    hibernate:
+    #ddl-auto: update #Tự tạo hoặc cập nhật db khi run
+    show-sql: true
+
+jwt:
+  signerKey: "a193e5f9c15cd8ce16e881b591e21f1a91bda4ea6a41313d4b24d07e5c466821"
+  valid-duration: 3600 #Thời hạn token (giây)
+  refreshable-duration: 36000 #Khoảng thời gian có thể refresh token (giây)
