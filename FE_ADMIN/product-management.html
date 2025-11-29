@@ -267,6 +267,26 @@
               </table>
               <!-- End Table with stripped rows -->
 
+              <!-- Delete Confirmation Modal -->
+              <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                      <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn có chắc chắn muốn xóa sản phẩm này không?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                      <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -320,9 +340,9 @@
       const categorySelect = document.getElementById("filter-category");
       const brandSelect = document.getElementById("filter-brand");
 
-      // ------------------------------
-      // Load Categories
-      // ------------------------------
+      // ============================================
+      //  LOAD DANH MỤC
+      // ============================================
       function loadCategories() {
         return fetch("http://localhost:8080/tech-store/api/categories", {
           method: "GET",
@@ -344,9 +364,9 @@
           .catch(err => console.error("Lỗi load categories:", err));
       }
 
-      // ------------------------------
-      // Load Brands
-      // ------------------------------
+      // ============================================
+      //  LOAD THƯƠNG HIỆU
+      // ============================================
       function loadBrands() {
         return fetch("http://localhost:8080/tech-store/api/brands", {
           method: "GET",
@@ -368,10 +388,11 @@
           .catch(err => console.error("Lỗi load brands:", err));
       }
 
-      // ------------------------------
-      // Load Products
-      // ------------------------------
-      function loadProducts() {
+      // ============================================
+      //  LOAD SẢN PHẨM
+      //  (PHẢI GLOBAL → GÁN VÀO window)
+      // ============================================
+      window.loadProducts = function () {
         const categoryId = categorySelect.value;
         const brandId = brandSelect.value;
 
@@ -407,42 +428,139 @@
               const tr = document.createElement("tr");
               tr.dataset.productId = product.productId;
               tr.innerHTML = `
-                <td><img src="${mainImage}" alt="${product.productName}" style="max-height: 70px;"></td>
-                <td class="align-middle">${product.productName}</td>
-                <td class="align-middle">${product.category.categoryName}</td>
-                <td class="align-middle">${product.brand.brandName}</td>
-                <td class="align-middle">${product.warrantyMonths} tháng</td>
-                <td class="align-middle">${product.productStatus === "ACTIVE" ? 'Hoạt động' : 'Ngưng hoạt động'}</td>
-                <td class="align-middle">
-                  <button class="btn btn-sm btn-warning text-white toggle-status">
-                    <i class="bx ${product.productStatus === "ACTIVE" ? 'bxs-lock-open' : 'bxs-lock'}"></i>
-                  </button>
-                  <button class="btn btn-sm btn-primary text-white" onclick="editProduct('${product.productId}')">
-                    <i class="bi bi-pencil-square"></i>
-                  </button>
-                  <button class="btn btn-sm btn-danger text-white" onclick="deleteProduct('${product.productId}')">
-                    <i class="bx bx-trash"></i>
-                  </button>
-                </td>
-              `;
+            <td><img src="${mainImage}" alt="${product.productName}" style="max-height: 70px;"></td>
+            <td class="align-middle">${product.productName}</td>
+            <td class="align-middle">${product.category?.categoryName || ''}</td>
+            <td class="align-middle">${product.brand?.brandName || ''}</td>
+            <td class="align-middle">${product.warrantyMonths || 0} tháng</td>
+            <td class="align-middle status-cell">${product.productStatus === "ACTIVE" ? 'Hoạt động' : 'Khóa'}</td>
+            <td class="align-middle">
+              <button class="btn btn-sm btn-warning text-white toggle-status" title="Đổi trạng thái">
+                <i class="bx ${product.productStatus === "ACTIVE" ? 'bxs-lock-open' : 'bxs-lock'}"></i>
+              </button>
+              <button class="btn btn-sm btn-primary text-white" onclick="editProduct('${product.productId}')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button class="btn btn-sm btn-danger text-white" onclick="deleteProduct('${product.productId}')">
+                <i class="bx bx-trash"></i>
+              </button>
+            </td>
+          `;
               tbody.appendChild(tr);
             });
           })
           .catch(err => console.error("Error loading products:", err));
-      }
+      };
 
       categorySelect.addEventListener("change", loadProducts);
       brandSelect.addEventListener("change", loadProducts);
 
-      // ------------------------------
-      // Load filters rồi load products
-      // ------------------------------
+      // ============================================
+      //  XÓA SẢN PHẨM (GLOBAL)
+      // ============================================
+      let selectedProductId = null;
+
+      window.deleteProduct = function (productId) {
+        selectedProductId = productId;
+        const modal = new bootstrap.Modal(document.getElementById("deleteProductModal"));
+        modal.show();
+      };
+
+      document.getElementById("confirmDeleteBtn").addEventListener("click", function () {
+        if (!selectedProductId) return;
+
+        fetch(`http://localhost:8080/tech-store/api/products/${selectedProductId}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+          }
+        })
+          .then(res => {
+            if (res.ok) {
+              alert("Xóa sản phẩm thành công");
+              loadProducts();
+            } else {
+              return res.json().then(err => {
+                alert("Lỗi: " + (err.message || "Không thể xóa sản phẩm"));
+              });
+            }
+          })
+          .catch(err => {
+            console.error("Lỗi khi xóa sản phẩm:", err);
+            alert("Không thể kết nối đến server");
+          })
+          .finally(() => {
+            selectedProductId = null;
+            const modal = bootstrap.Modal.getInstance(document.getElementById("deleteProductModal"));
+            if (modal) modal.hide();
+          });
+      });
+
+      // ============================================
+      //  TOGGLE STATUS (EVENT DELEGATION)
+      // ============================================
+      // Dùng delegation để bắt click vào nút .toggle-status (button hoặc icon)
+      document.addEventListener("click", function (event) {
+        const btn = event.target.closest(".toggle-status");
+        if (!btn) return;
+
+        const tr = btn.closest("tr");
+        if (!tr) return;
+        const productId = tr.dataset.productId;
+        if (!productId) return;
+
+        // Disable button tạm thời để tránh double click
+        btn.disabled = true;
+
+        fetch(`http://localhost:8080/tech-store/api/products/${productId}/status`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          }
+        })
+          .then(async res => {
+            // nếu server trả status 204 hoặc 200/201, cố gắng parse json nếu có
+            if (!res.ok) {
+              let errText = "Đổi trạng thái thất bại";
+              try {
+                const err = await res.json();
+                errText = err.message || errText;
+              } catch (e) { }
+              throw new Error(errText);
+            }
+            return res.json().catch(() => ({}));
+          })
+          .then(data => {
+            // Chọn cách cập nhật UI: load lại cả danh sách để đồng bộ hoặc cập nhật cục bộ
+            // Ở đây gọi loadProducts() để đảm bảo dữ liệu đồng bộ
+            loadProducts();
+          })
+          .catch(err => {
+            console.error("Lỗi cập nhật trạng thái:", err);
+            alert(err.message || "Không thể cập nhật trạng thái sản phẩm");
+          })
+          .finally(() => {
+            btn.disabled = false;
+          });
+      });
+
+      // ============================================
+      // Update Product
+      // ============================================
+      window.editProduct = function(productId) {
+        window.location.href = `product-update.html?productId=${productId}`;
+      }
+
+      // ============================================
+      //  Load Filters & Products lần đầu
+      // ============================================
       Promise.all([loadCategories(), loadBrands()]).then(() => {
         loadProducts();
       });
     });
   </script>
-
 
 
 </body>
