@@ -94,4 +94,20 @@ public class ProductController {
                 .result(products)
                 .build();
     }
+
+    @PutMapping("/{productId}/status")
+    public ApiResponse<ProductResponse> changeProductStatus(@PathVariable String productId) {
+        return ApiResponse.<ProductResponse>builder()
+                .message("Cập nhật trạng thái thành công")
+                .result(productService.changeProductStatus(productId))
+                .build();
+    }
+
+    @DeleteMapping("/{productId}")
+    public ApiResponse<Void> deleteProduct(@PathVariable String productId) {
+        productService.deleteProduct(productId);
+        return ApiResponse.<Void>builder()
+                .message("Xóa thành công")
+                .build();
+    }
 }

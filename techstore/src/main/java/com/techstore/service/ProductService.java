@@ -6,6 +6,7 @@ import com.techstore.dto.response.ProductResponse;
 import com.techstore.entity.Brand;
 import com.techstore.entity.Category;
 import com.techstore.entity.Product;
+import com.techstore.enums.ProductStatus;
 import com.techstore.exception.AppException;
 import com.techstore.exception.ErrorCode;
 import com.techstore.mapper.ProductMapper;
@@ -71,5 +72,26 @@ public class ProductService {
         if(products.isEmpty())
             throw new AppException(ErrorCode.PRODUCT_NOT_FOUND);
         return products;
+    }
+
+    public ProductResponse changeProductStatus(String productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+
+        if(product.getProductStatus().equals(ProductStatus.ACTIVE.name()))
+            product.setProductStatus(ProductStatus.LOCKED.name());
+        else
+            product.setProductStatus(ProductStatus.ACTIVE.name());
+
+        productRepository.save(product);
+
+        return productMapper.toProductResponse(product);
+    }
+
+    public void deleteProduct(String productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+
+        productRepository.delete(product);
     }
 }
