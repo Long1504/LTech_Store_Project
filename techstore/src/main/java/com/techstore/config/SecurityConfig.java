@@ -42,7 +42,8 @@ public class SecurityConfig {
             "/api/users/customers/**",
             "/api/categories",
             "/api/upload/**",
-            "/api/product-variants/**"
+            "/api/product-variants/**",
+            "/api/payments/**"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_POST = {

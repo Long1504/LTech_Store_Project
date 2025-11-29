@@ -116,7 +116,70 @@ public class OrderService {
 
         List<OrderItemResponse> orderItemResponses = new ArrayList<>();
 
-        for (OrderItem item : order.getOrderItems()) {
+        for(OrderItem item : order.getOrderItems()) {
+            orderItemResponses.add(orderItemMapper.toOrderItemResponse(item));
+        }
+
+        orderResponse.setOrderItems(orderItemResponses);
+        orderResponse.setPayment(paymentMapper.toPaymentResponse(order.getPayment()));
+
+        return orderResponse;
+    }
+
+    public List<OrderResponse> getAllOrders() {
+        List<Order> orders = orderRepository.findAllByOrderByCreatedAtDesc();
+
+        List<OrderResponse> orderResponses = new ArrayList<>();
+        for(Order order : orders) {
+            OrderResponse orderResponse = orderMapper.toOrderResponse(order);
+
+            List<OrderItemResponse> orderItemResponses = new ArrayList<>();
+            for(OrderItem orderItem : order.getOrderItems()) {
+                orderItemResponses.add(orderItemMapper.toOrderItemResponse(orderItem));
+            }
+            orderResponse.setOrderItems(orderItemResponses);
+
+            orderResponse.setPayment(paymentMapper.toPaymentResponse(order.getPayment()));
+
+            orderResponses.add(orderResponse);
+        }
+
+        return orderResponses;
+    }
+
+    public List<OrderResponse> getAllOrdersByOrderStatus(String orderStatus) {
+        List<Order> orders = orderRepository.findAllByOrderStatusOrderByCreatedAtDesc(orderStatus);
+
+        List<OrderResponse> orderResponses = new ArrayList<>();
+        for(Order order : orders) {
+            OrderResponse orderResponse = orderMapper.toOrderResponse(order);
+
+            List<OrderItemResponse> orderItemResponses = new ArrayList<>();
+            for(OrderItem orderItem : order.getOrderItems()) {
+                orderItemResponses.add(orderItemMapper.toOrderItemResponse(orderItem));
+            }
+            orderResponse.setOrderItems(orderItemResponses);
+
+            orderResponse.setPayment(paymentMapper.toPaymentResponse(order.getPayment()));
+
+            orderResponses.add(orderResponse);
+        }
+
+        return orderResponses;
+    }
+
+    public OrderResponse changeOrderStatus(String orderId, String orderStatus) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_EXISTED));
+
+        order.setOrderStatus(orderStatus);
+
+        order = orderRepository.save(order);
+
+        OrderResponse orderResponse = orderMapper.toOrderResponse(order);
+
+        List<OrderItemResponse> orderItemResponses = new ArrayList<>();
+        for(OrderItem item : order.getOrderItems()) {
             orderItemResponses.add(orderItemMapper.toOrderItemResponse(item));
         }
 

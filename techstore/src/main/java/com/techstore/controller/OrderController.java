@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
@@ -27,6 +29,31 @@ public class OrderController {
     public ApiResponse<OrderResponse> getOrderById(@PathVariable String orderId) {
         return ApiResponse.<OrderResponse>builder()
                 .result(orderService.getOrderByOrderId(orderId))
+                .build();
+    }
+
+    @GetMapping()
+    public ApiResponse<List<OrderResponse>> getAllOrders() {
+        return ApiResponse.<List<OrderResponse>>builder()
+                .result(orderService.getAllOrders())
+                .build();
+    }
+
+    @GetMapping("/filter")
+    public ApiResponse<List<OrderResponse>> getAllOrdersByOrderStatus(@RequestParam String orderStatus) {
+        return ApiResponse.<List<OrderResponse>>builder()
+                .result(orderService.getAllOrdersByOrderStatus(orderStatus))
+                .build();
+    }
+
+    @PutMapping("/{orderId}")
+    public ApiResponse<OrderResponse> changeOrderStatus(
+            @PathVariable String orderId,
+            @RequestParam String orderStatus
+    ) {
+        return ApiResponse.<OrderResponse>builder()
+                .message("Đã cập nhật trạng thái thanh toán")
+                .result(orderService.changeOrderStatus(orderId, orderStatus))
                 .build();
     }
 }

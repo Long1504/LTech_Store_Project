@@ -54,6 +54,9 @@ public enum ErrorCode {
     //Order
     ORDER_NOT_EXISTED(7444, "Đơn hàng không tồn tại", HttpStatus.NOT_FOUND),
 
+    //Payment
+    PAYMENT_NOT_EXISTED(7555, "Thông tin thanh toán không tồn tại", HttpStatus.NOT_FOUND),
+
     //Authentication
     UNAUTHENTICATED(8001, "Chưa xác thực", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(8002, "Bạn không có quyền truy cập", HttpStatus.FORBIDDEN),
