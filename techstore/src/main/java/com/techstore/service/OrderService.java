@@ -188,4 +188,29 @@ public class OrderService {
 
         return orderResponse;
     }
+
+    public List<OrderResponse> getAllOrdersByUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        List<Order> orders = orderRepository.findAllByUser_UserIdOrderByCreatedAtDesc(user.getUserId());
+
+        List<OrderResponse> orderResponses = new ArrayList<>();
+        for(Order order : orders) {
+            OrderResponse orderResponse = orderMapper.toOrderResponse(order);
+
+            List<OrderItemResponse> orderItemResponses = new ArrayList<>();
+            for(OrderItem orderItem : order.getOrderItems()) {
+                orderItemResponses.add(orderItemMapper.toOrderItemResponse(orderItem));
+            }
+            orderResponse.setOrderItems(orderItemResponses);
+
+            orderResponse.setPayment(paymentMapper.toPaymentResponse(order.getPayment()));
+
+            orderResponses.add(orderResponse);
+        }
+
+        return orderResponses;
+    }
 }

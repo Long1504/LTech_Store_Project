@@ -46,6 +46,13 @@ public class OrderController {
                 .build();
     }
 
+    @GetMapping("/my-orders")
+    public ApiResponse<List<OrderResponse>> getAllOrderByUser() {
+        return ApiResponse.<List<OrderResponse>>builder()
+                .result(orderService.getAllOrdersByUser())
+                .build();
+    }
+
     @PutMapping("/{orderId}")
     public ApiResponse<OrderResponse> changeOrderStatus(
             @PathVariable String orderId,

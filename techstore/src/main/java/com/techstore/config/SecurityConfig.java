@@ -49,11 +49,13 @@ public class SecurityConfig {
     private final String[] CUSTOMER_ENDPOINTS_POST = {
             "/api/addresses/**",
             "/api/discounts/apply",
-            "/api/orders/**"
+            "/api/orders/**",
+            "/api/reviews"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_GET = {
-            "/api/addresses/**"
+            "/api/addresses/**",
+            "/api/orders/my-orders"
     };
 
     @Bean

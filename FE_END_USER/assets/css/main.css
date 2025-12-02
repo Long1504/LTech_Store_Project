@@ -7670,13 +7670,15 @@ section,
   background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
 }
 
-.account .content-area .orders-grid .order-card .order-footer button.btn-review {
-  background-color: #f0fdf4;
-  color: #22c55e;
+button.btn-review {
+  background-color: #def4e4;
+  color: #1ac85a;
   border: none;
+  border-radius: 14px;
+  padding: 4px 10px;
 }
 
-.account .content-area .orders-grid .order-card .order-footer button.btn-review:hover {
+button.btn-review:hover {
   background-color: #dcfce7;
 }
 

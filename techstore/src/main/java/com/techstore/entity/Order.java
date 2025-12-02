@@ -77,7 +77,7 @@ public class Order {
     // Sinh orderCode: ORDddMMyyyyHHmmssXXX
     private void generateOrderCode() {
         if (orderCode == null || orderCode.isEmpty()) {
-            String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+            String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyy-HHmmss-"));
             int randomNumber = new Random().nextInt(900) + 100; // 100-999
             this.orderCode = "ORD-" + dateTime + randomNumber;
         }

@@ -31,4 +31,9 @@ public class Review {
     private String comment;
 
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 }

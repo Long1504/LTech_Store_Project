@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class ReviewRequest {
-    private Integer productId;
-    private Integer userId;
+    private String productId;
     private Integer rating;
     private String comment;
 }
