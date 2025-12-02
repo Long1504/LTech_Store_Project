@@ -55,7 +55,16 @@ public class SecurityConfig {
 
     private final String[] CUSTOMER_ENDPOINTS_GET = {
             "/api/addresses/**",
-            "/api/orders/my-orders"
+            "/api/orders/my-orders",
+            "/api/reviews/my-reviews"
+    };
+
+    private final String[] CUSTOMER_ENDPOINTS_PUT = {
+            "/api/reviews"
+    };
+
+    private final String[] CUSTOMER_ENDPOINTS_DELETE = {
+            "/api/reviews"
     };
 
     @Bean
@@ -69,6 +78,8 @@ public class SecurityConfig {
                         .requestMatchers(ADMIN_ENDPOINTS).hasRole(RoleName.ADMIN.name())
                         .requestMatchers(HttpMethod.POST, CUSTOMER_ENDPOINTS_POST).hasRole(RoleName.CUSTOMER.name())
                         .requestMatchers(HttpMethod.GET, CUSTOMER_ENDPOINTS_GET).hasRole(RoleName.CUSTOMER.name())
+                        .requestMatchers(HttpMethod.PUT, CUSTOMER_ENDPOINTS_PUT).hasRole(RoleName.CUSTOMER.name())
+                        .requestMatchers(HttpMethod.DELETE, CUSTOMER_ENDPOINTS_DELETE).hasRole(RoleName.CUSTOMER.name())
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

@@ -16,8 +16,10 @@ public interface ReviewMapper {
     @Mapping(target = "product", ignore = true)
     Review toReview(ReviewRequest reviewRequest);
 
+    @Mapping(source = "product.productId", target = "productId")
+    @Mapping(source = "product.productName", target = "productName")
     @Mapping(target = "productImageUrl", expression = "java(getMainImageUrl(review.getProduct()))")
-    @Mapping(target = "userFullName", expression = "java(review.getUser().getFirstname() + \" \" + review.getUser().getLastname())")
+    @Mapping(target = "userFullName", expression = "java(review.getUser().getLastname() + \" \" + review.getUser().getFirstname())")
     ReviewResponse toReviewResponse(Review review);
 
     List<ReviewResponse> toReviewResponseList(List<Review> reviews);

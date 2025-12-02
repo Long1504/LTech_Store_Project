@@ -13,6 +13,7 @@ public interface ProductMapper {
     @Mapping(target = "brand", ignore = true)
     Product toProduct(ProductCreateRequest productCreateRequest);
 
+    @Mapping(target = "reviews", ignore = true)
     ProductResponse toProductResponse(Product product);
 
 //    @Mapping(source = "category.categoryName", target = "categoryName")

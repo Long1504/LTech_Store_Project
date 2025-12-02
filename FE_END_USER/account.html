@@ -248,7 +248,7 @@
               <!-- User Info -->
               <div class="user-info" data-aos="fade-right">
                 <div class="user-avatar">
-                  <img src="assets/img/person/person-f-1.webp" alt="Profile" loading="lazy">
+                  <img src="assets/img/person/avt-profile.jpg" alt="Profile" loading="lazy">
                   <span class="status-badge"><i class="bi bi-shield-check"></i></span>
                 </div>
                 <h4 id="fullname">Sarah Anderson</h4>
@@ -424,6 +424,45 @@
                           </div>
                         </div>
                       </div>
+
+                      <!-- Review Modal -->
+                      <div class="modal fade" id="reviewModal" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Đánh giá sản phẩm</h5>
+                              <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Thông tin sản phẩm -->
+                              <div class="d-flex align-items-center mb-3">
+                                <img id="reviewProductImage" src="" alt="Product" class="me-3"
+                                  style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                                <h6 id="reviewProductName" class="mb-0"></h6>
+                              </div>
+                              <!-- Rating Stars -->
+                              <div class="text-center fs-4 mb-3" id="starRating">
+                                <i class="bi bi-star" data-value="1"></i>
+                                <i class="bi bi-star" data-value="2"></i>
+                                <i class="bi bi-star" data-value="3"></i>
+                                <i class="bi bi-star" data-value="4"></i>
+                                <i class="bi bi-star" data-value="5"></i>
+                              </div>
+                              <!-- Comment -->
+                              <textarea id="reviewComment" class="form-control" rows="3"
+                                placeholder="Nhập bình luận..."></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                              <button class="btn btn-primary" id="submitReviewBtn">Gửi đánh giá</button>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
                     </div>
                   </div>
 
@@ -449,55 +488,15 @@
                 <div class="tab-pane fade" id="reviews">
                   <div class="section-header" data-aos="fade-up">
                     <h2>Đánh giá</h2>
-                    <div class="header-actions">
-                      <div class="dropdown">
-                        <button class="filter-btn" data-bs-toggle="dropdown">
-                          <i class="bi bi-funnel"></i>
-                          <span>Sắp xếp: Gần đây</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Gần đây</a></li>
-                          <li><a class="dropdown-item" href="#">Đánh giá cao nhất</a></li>
-                          <li><a class="dropdown-item" href="#">Đánh giá thấp nhất</a></li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
 
                   <div class="reviews-grid">
-                    <!-- Review Card 1 -->
-                    <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-                      <div class="review-header">
-                        <img src="assets/img/product/product-1.webp" alt="Product" class="product-image" loading="lazy">
-                        <div class="review-meta">
-                          <h4>Lorem ipsum dolor sit amet</h4>
-                          <div class="rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <span>(5.0)</span>
-                          </div>
-                          <div class="review-date">Reviewed on Feb 15, 2025</div>
-                        </div>
-                      </div>
-                      <div class="review-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua.</p>
-                      </div>
-                      <div class="review-footer">
-                        <button type="button" class="btn-edit">Edit Review</button>
-                        <button type="button" class="btn-delete">Delete</button>
-                      </div>
-                    </div>
-
-                    <!-- Review Card 2 -->
+                    <!-- Review Card -->
                     <div class="review-card" data-aos="fade-up" data-aos-delay="200">
                       <div class="review-header">
                         <img src="assets/img/product/product-2.webp" alt="Product" class="product-image" loading="lazy">
                         <div class="review-meta">
-                          <h4>Consectetur adipiscing elit</h4>
+                          <h4>iPhone 16 Pro Max</h4>
                           <div class="rating">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -506,18 +505,72 @@
                             <i class="bi bi-star"></i>
                             <span>(4.0)</span>
                           </div>
-                          <div class="review-date">Reviewed on Feb 10, 2025</div>
+                          <div class="review-date">Đánh giá lúc 15:37:58 01/12/2025</div>
                         </div>
                       </div>
                       <div class="review-content">
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.</p>
+                        <p>Sản phẩm tốt, giá hợp lý.</p>
                       </div>
                       <div class="review-footer">
-                        <button type="button" class="btn-edit">Edit Review</button>
-                        <button type="button" class="btn-delete">Delete</button>
+                        <button type="button" class="btn-edit">Sửa</button>
+                        <button type="button" class="btn-delete">Xóa</button>
                       </div>
                     </div>
+
+                    <!-- Edit Review Modal -->
+                    <div class="modal fade" id="editReviewModal" tabindex="-1" aria-labelledby="editReviewModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="editReviewModalLabel">Sửa đánh giá</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="d-flex align-items-center mb-3">
+                              <img id="editReviewProductImage" src="" alt="Product"
+                                style="width:60px;height:60px;object-fit:cover;border-radius:5px;margin-right:10px;">
+                              <h6 id="editReviewProductName" class="mb-0"></h6>
+                            </div>
+                            <div id="editStarRating" class="mb-3">
+                              <i class="bi bi-star" data-value="1" style="cursor:pointer;"></i>
+                              <i class="bi bi-star" data-value="2" style="cursor:pointer;"></i>
+                              <i class="bi bi-star" data-value="3" style="cursor:pointer;"></i>
+                              <i class="bi bi-star" data-value="4" style="cursor:pointer;"></i>
+                              <i class="bi bi-star" data-value="5" style="cursor:pointer;"></i>
+                            </div>
+                            <textarea id="editReviewComment" class="form-control" rows="3"
+                              placeholder="Viết bình luận..."></textarea>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-primary" id="submitEditReviewBtn">Lưu</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Delete Confirmation Modal -->
+                    <div class="modal fade" id="deleteReviewModal" tabindex="-1"
+                      aria-labelledby="deleteReviewModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteReviewModalLabel">Xác nhận xóa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                          </div>
+                          <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa đánh giá này?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger" id="confirmDeleteReviewBtn">Xóa</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
 
@@ -980,6 +1033,7 @@
   <script src="assets/js/account-address.js"></script>
   <script src="assets/js/account-order.js"></script>
   <script src="assets/js/account-order-review.js"></script>
+  <script src="assets/js/account-review.js"></script>
   <script src="assets/js/logout.js"></script>
 
 </body>

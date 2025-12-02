@@ -3,19 +3,23 @@ package com.techstore.service;
 import com.techstore.dto.request.ProductCreateRequest;
 import com.techstore.dto.response.ProductOverviewResponse;
 import com.techstore.dto.response.ProductResponse;
+import com.techstore.dto.response.ReviewResponse;
 import com.techstore.entity.Brand;
 import com.techstore.entity.Category;
 import com.techstore.entity.Product;
+import com.techstore.entity.Review;
 import com.techstore.enums.ProductStatus;
 import com.techstore.exception.AppException;
 import com.techstore.exception.ErrorCode;
 import com.techstore.mapper.ProductMapper;
+import com.techstore.mapper.ReviewMapper;
 import com.techstore.repository.BrandRepository;
 import com.techstore.repository.CategoryRepository;
 import com.techstore.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,7 +28,9 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final BrandRepository brandRepository;
+
     private final ProductMapper productMapper;
+    private final ReviewMapper reviewMapper;
 
     public ProductResponse createProduct(ProductCreateRequest request) {
         Product product = productMapper.toProduct(request);
@@ -51,7 +57,15 @@ public class ProductService {
     public List<ProductResponse> getAllProducts() {
         return productRepository.findAll()
                 .stream()
-                .map(product -> productMapper.toProductResponse(product))
+                .map(product -> {
+                    ProductResponse productResponse = productMapper.toProductResponse(product);
+                    List<ReviewResponse> reviewResponses = new ArrayList<>();
+                    for(Review review : product.getReviews()) {
+                        reviewResponses.add(reviewMapper.toReviewResponse(review));
+                    }
+                    productResponse.setReviews(reviewResponses);
+                    return productResponse;
+                })
                 .toList();
     }
 
@@ -63,8 +77,16 @@ public class ProductService {
     }
 
     public ProductResponse getProductByProductId(String productId) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
-        return productMapper.toProductResponse(product);
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+
+        ProductResponse productResponse = productMapper.toProductResponse(product);
+        List<ReviewResponse> reviewResponses = new ArrayList<>();
+        for(Review review : product.getReviews()) {
+            reviewResponses.add(reviewMapper.toReviewResponse(review));
+        }
+        productResponse.setReviews(reviewResponses);
+        return productResponse;
     }
 
     public List<ProductOverviewResponse> getAllProductOverviews(String categoryName, String brandName) {

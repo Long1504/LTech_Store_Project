@@ -100,6 +100,30 @@ public class UserService {
         return userMapper.toUserResponse(user);
     }
 
+    public UserResponse updateMyInfo(UserRequest userRequest) {
+        if(userRepository.existsByEmail(userRequest.getEmail())) {
+            throw new AppException(ErrorCode.EMAIL_EXISTED);
+        }
+        if(userRepository.existsByPhoneNumber(userRequest.getPhoneNumber())) {
+            throw new AppException(ErrorCode.PHONE_NUMBER_EXISTED);
+        }
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user = userRepository.findById(username)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        user.setFirstname(userRequest.getFirstname());
+        user.setLastname(userRequest.getLastname());
+        user.setDateOfBirth(userRequest.getDateOfBirth());
+        user.setGender(userRequest.getGender());
+        user.setEmail(userRequest.getEmail());
+        user.setPhoneNumber(userRequest.getPhoneNumber());
+
+        user = userRepository.save(user);
+        return userMapper.toUserResponse(user);
+    }
+
     public UserResponse changeUserStatus(String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));

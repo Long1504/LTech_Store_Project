@@ -67,6 +67,14 @@ public class UserController {
                 .build();
     }
 
+    @PutMapping("/my-info/info")
+    public ApiResponse<UserResponse> updateMyInfo(@RequestBody UserRequest request) {
+        return ApiResponse.<UserResponse>builder()
+                .message("Cập nhật thông tin thành công")
+                .result(userService.updateMyInfo(request))
+                .build();
+    }
+
     @PutMapping("/customers/{userId}/status")
     public ApiResponse<UserResponse> changeUserStatus(@PathVariable String userId) {
         return ApiResponse.<UserResponse>builder()

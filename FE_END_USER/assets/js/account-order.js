@@ -172,7 +172,7 @@ function renderOrders(orders) {
                                         <div class="item-price">${formatMoney(item.subTotal)}</div>
 
                                         ${order.orderStatus === "COMPLETED" ? 
-                                            `<button type="button" class="btn-review">Đánh giá</button>` : ''}
+                                            `<button type="button" class="btn-review" data-product-id="${item.productId}">Đánh giá</button>` : ''}
                                     </div>
                                 `).join("")}
                             </div>

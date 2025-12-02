@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface OrderItemMapper {
     @Mapping(source = "productVariant.productVariantId", target = "productVariantId")
+    @Mapping(source = "productVariant.product.productId", target = "productId")
     @Mapping(source = "productVariant.product.productName", target = "productName")
     @Mapping(source = "productVariant.color", target = "color")
     @Mapping(expression = "java(orderItem.getPrice().multiply(java.math.BigDecimal.valueOf(orderItem.getQuantity())))", target = "subTotal")

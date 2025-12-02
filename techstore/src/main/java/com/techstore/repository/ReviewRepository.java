@@ -8,19 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, String> {
-//    @Query("""
-//        SELECT new com.example.dto.ReviewResponseDTO(
-//            r.reviewId,
-//            i.imageUrl,
-//            CONCAT(u.firstname, ' ', u.lastname),
-//            r.rating,
-//            r.comment,
-//            r.createdAt
-//        )
-//        FROM Review r
-//        JOIN r.product p
-//        JOIN Image i ON i.product = p AND i.isMain = TRUE
-//        JOIN User u ON u.userId = r.user.userId
-//        """)
-//    List<ReviewResponse> findAllReviewDetails();
+    List<Review> findAllByUser_UserIdOrderByCreatedAtDesc(String userId);
 }

@@ -57,6 +57,9 @@ public enum ErrorCode {
     //Payment
     PAYMENT_NOT_EXISTED(7555, "Thông tin thanh toán không tồn tại", HttpStatus.NOT_FOUND),
 
+    //Review
+    REVIEW_NOT_EXISTED(7666, "Đánh giá không tồn tại", HttpStatus.NOT_FOUND),
+
     //Authentication
     UNAUTHENTICATED(8001, "Chưa xác thực", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(8002, "Bạn không có quyền truy cập", HttpStatus.FORBIDDEN),
