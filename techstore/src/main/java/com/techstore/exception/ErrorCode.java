@@ -22,6 +22,7 @@ public enum ErrorCode {
     USERNAME_INVALID(2006, "Username phải có ít nhất {min} ký tự", HttpStatus.BAD_REQUEST),
     INVALID_PASSWORD(2007, "Password phải có ít nhất {min} ký tự", HttpStatus.BAD_REQUEST),
     INVALID_DOB(2008, "Tuổi của bạn phải ít nhất {min}", HttpStatus.BAD_REQUEST),
+    PASSWORD_INCORRECT(2009, "Mật khẩu không đúng", HttpStatus.BAD_REQUEST),
 
     //Brand
     BRAND_EXISTED(3001, "Thương hiệu đã tồn tại", HttpStatus.CONFLICT),

@@ -1,6 +1,7 @@
 package com.techstore.service;
 
 import com.techstore.dto.request.UserRequest;
+import com.techstore.dto.request.UserUpdatePasswordRequest;
 import com.techstore.dto.response.UserResponse;
 import com.techstore.entity.Role;
 import com.techstore.entity.User;
@@ -101,17 +102,17 @@ public class UserService {
     }
 
     public UserResponse updateMyInfo(UserRequest userRequest) {
-        if(userRepository.existsByEmail(userRequest.getEmail())) {
-            throw new AppException(ErrorCode.EMAIL_EXISTED);
-        }
-        if(userRepository.existsByPhoneNumber(userRequest.getPhoneNumber())) {
-            throw new AppException(ErrorCode.PHONE_NUMBER_EXISTED);
-        }
-
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        User user = userRepository.findById(username)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        if(!user.getEmail().equals(userRequest.getEmail()) && userRepository.existsByEmail(userRequest.getEmail())) {
+            throw new AppException(ErrorCode.EMAIL_EXISTED);
+        }
+        if(!user.getPhoneNumber().equals(userRequest.getPhoneNumber()) && userRepository.existsByPhoneNumber(userRequest.getPhoneNumber())) {
+            throw new AppException(ErrorCode.PHONE_NUMBER_EXISTED);
+        }
 
         user.setFirstname(userRequest.getFirstname());
         user.setLastname(userRequest.getLastname());
@@ -121,6 +122,22 @@ public class UserService {
         user.setPhoneNumber(userRequest.getPhoneNumber());
 
         user = userRepository.save(user);
+        return userMapper.toUserResponse(user);
+    }
+
+    public UserResponse updatePassword(UserUpdatePasswordRequest request) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        if(!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
+            throw new AppException(ErrorCode.PASSWORD_INCORRECT);
+        }
+
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+
+        userRepository.save(user);
         return userMapper.toUserResponse(user);
     }
 

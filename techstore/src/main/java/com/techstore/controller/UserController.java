@@ -1,6 +1,7 @@
 package com.techstore.controller;
 
 import com.techstore.dto.request.UserRequest;
+import com.techstore.dto.request.UserUpdatePasswordRequest;
 import com.techstore.dto.response.ApiResponse;
 import com.techstore.dto.response.UserResponse;
 import com.techstore.service.UserService;
@@ -53,7 +54,7 @@ public class UserController {
                 .build();
     }
 
-    @GetMapping("/myInfo")
+    @GetMapping("/my-info")
     public ApiResponse<UserResponse> getMyInfo() {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.getMyInfo())
@@ -67,11 +68,19 @@ public class UserController {
                 .build();
     }
 
-    @PutMapping("/my-info/info")
+    @PutMapping("/my-info")
     public ApiResponse<UserResponse> updateMyInfo(@RequestBody UserRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .message("Cập nhật thông tin thành công")
                 .result(userService.updateMyInfo(request))
+                .build();
+    }
+
+    @PutMapping("/password")
+    public ApiResponse<UserResponse> updatePassword(@RequestBody UserUpdatePasswordRequest request) {
+        return ApiResponse.<UserResponse>builder()
+                .message("Cập nhật mật khẩu thành công")
+                .result(userService.updatePassword(request))
                 .build();
     }
 

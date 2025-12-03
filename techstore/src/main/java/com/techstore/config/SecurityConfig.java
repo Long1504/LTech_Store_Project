@@ -54,13 +54,16 @@ public class SecurityConfig {
     };
 
     private final String[] CUSTOMER_ENDPOINTS_GET = {
+            "/api/users/my-info",
             "/api/addresses/**",
             "/api/orders/my-orders",
             "/api/reviews/my-reviews"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_PUT = {
-            "/api/reviews"
+            "/api/reviews",
+            "/api/users/my-info",
+            "/api/users/password"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_DELETE = {
