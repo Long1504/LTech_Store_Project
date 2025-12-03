@@ -95,6 +95,13 @@ public class ProductController {
                 .build();
     }
 
+    @GetMapping("/search")
+    public ApiResponse<List<ProductOverviewResponse>> searchProducts(@RequestParam String keyword) {
+        return ApiResponse.<List<ProductOverviewResponse>>builder()
+                .result(productService.searchProductsByKeyword(keyword))
+                .build();
+    }
+
     @PutMapping("/{productId}/status")
     public ApiResponse<ProductResponse> changeProductStatus(@PathVariable String productId) {
         return ApiResponse.<ProductResponse>builder()

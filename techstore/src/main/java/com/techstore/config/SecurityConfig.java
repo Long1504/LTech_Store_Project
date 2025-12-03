@@ -34,7 +34,16 @@ public class SecurityConfig {
     };
 
     private final String[] PUBLIC_ENDPOINTS_GET = {
-            "/api/products/**"
+            "/api/products/**",
+            "/api/products/phones",
+            "/api/products/laptops",
+            "/api/products/charging-adapters",
+            "/api/products/charging-cables",
+            "/api/products/mouses",
+            "/api/products/keyboards",
+            "/api/products/search",
+            "/api/brands",
+            "/api/carts/cart-item-count"
     };
 
     private final String[] ADMIN_ENDPOINTS = {
@@ -44,6 +53,10 @@ public class SecurityConfig {
             "/api/upload/**",
             "/api/product-variants/**",
             "/api/payments/**"
+    };
+
+    private final String[] ADMIN_ENDPOINTS_DELETE = {
+            "/api/products/**"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_POST = {
@@ -79,6 +92,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS_POST).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINTS_GET).permitAll()
                         .requestMatchers(ADMIN_ENDPOINTS).hasRole(RoleName.ADMIN.name())
+                        .requestMatchers(HttpMethod.DELETE, ADMIN_ENDPOINTS_DELETE).hasRole(RoleName.ADMIN.name())
                         .requestMatchers(HttpMethod.POST, CUSTOMER_ENDPOINTS_POST).hasRole(RoleName.CUSTOMER.name())
                         .requestMatchers(HttpMethod.GET, CUSTOMER_ENDPOINTS_GET).hasRole(RoleName.CUSTOMER.name())
                         .requestMatchers(HttpMethod.PUT, CUSTOMER_ENDPOINTS_PUT).hasRole(RoleName.CUSTOMER.name())

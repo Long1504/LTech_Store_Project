@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -82,7 +82,7 @@
           <!-- Search -->
           <form class="search-form desktop-search-form">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
               <button class="btn" type="submit">
                 <i class="bi bi-search"></i>
               </button>
@@ -124,7 +124,7 @@
             <!-- Cart -->
             <a href="cart.html" class="header-action-btn">
               <i class="bi bi-cart3"></i>
-              <span class="badge">3</span>
+              <span class="badge">0</span>
             </a>
 
             <!-- Mobile Navigation Toggle -->
@@ -141,14 +141,14 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="index.html" class="active">Trang chủ</a></li>
-            <li><a href="phone.html">Điện thoại</a></li>
-            <li><a href="laptop.html">Laptop</a></li>
+            <li><a href="product-overview-by-category.html?category=phones">Điện thoại</a></li>
+            <li><a href="product-overview-by-category.html?category=laptops">Laptop</a></li>
             <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Củ sạc</a></li>
-                <li><a href="#">Cáp sạc</a></li>
-                <li><a href="#">Chuột</a></li>
-                <li><a href="#">Bàn phím</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-adapters">Củ sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-cables">Cáp sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=mouses">Chuột</a></li>
+                <li><a href="product-overview-by-category.html?category=keyboards">Bàn phím</a></li>
               </ul>
             </li>
 
@@ -1081,6 +1081,7 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Custom JS -->
   <script src="assets/js/header.js"></script>
   <script src="assets/js/logout.js"></script>
 

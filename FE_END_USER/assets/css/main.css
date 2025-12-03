@@ -4367,13 +4367,13 @@ section,
 .category-header .filter-container {
   background-color: var(--surface-color);
   border-radius: 12px;
-  padding: 1.75rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
+  /* padding: 1rem 1.25rem; */
+  /* box-shadow: 0 0.25rem 0.3rem rgba(0, 0, 0, 0.1); */
+  /* margin-bottom: 2rem; */
 }
 
 .category-header .filter-container .filter-item {
-  margin-bottom: 0.75rem;
+  /* margin-bottom: 0.75rem; */
 }
 
 .category-header .filter-container .filter-item .form-label {
@@ -4602,6 +4602,7 @@ section,
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .category-product-list .product-card:hover {
@@ -4625,7 +4626,7 @@ section,
 
 .category-product-list .product-image {
   position: relative;
-  padding-top: 125%;
+  padding-top: 110%;
   background: color-mix(in srgb, var(--surface-color), transparent 97%);
   overflow: hidden;
 }
@@ -4736,7 +4737,7 @@ section,
 }
 
 .category-product-list .product-name {
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 

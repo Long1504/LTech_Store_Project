@@ -19,6 +19,13 @@ public class CartController {
                 .build();
     }
 
+    @GetMapping("/cart-item-count")
+    public ApiResponse<Integer> getCartItemCount() {
+        return ApiResponse.<Integer>builder()
+                .result(cartService.getCartItemCount())
+                .build();
+    }
+
     @DeleteMapping()
     public ApiResponse<Void> clearCart() {
         cartService.clearCart();

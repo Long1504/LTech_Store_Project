@@ -59,6 +59,22 @@ public class CartService {
         return cartResponse;
     }
 
+    public int getCartItemCount() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (username == null || username.equals("anonymousUser"))
+            return 0;
+
+        User user = userRepository.findByUsername(username).orElse(null);
+        if(user == null)
+            return 0;
+
+        Cart cart = cartRepository.findByUser_UserId(user.getUserId()).orElse(null);
+        if(cart == null)
+            return 0;
+
+        return cart.getCartItems().size();
+    }
+
     public void clearCart() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username)

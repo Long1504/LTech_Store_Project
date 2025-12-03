@@ -17,4 +17,6 @@ public class ProductOverviewResponse {
     private BigDecimal originalPrice;
     private BigDecimal promotionalPrice;
     private String imageURL;
+    private double averageRating;
+    private long reviewCount;
 }

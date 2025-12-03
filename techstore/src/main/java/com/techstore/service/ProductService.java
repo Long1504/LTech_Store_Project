@@ -96,6 +96,15 @@ public class ProductService {
         return products;
     }
 
+    public List<ProductOverviewResponse> searchProductsByKeyword(String keyword) {
+        List<ProductOverviewResponse> products = productRepository.searchProductsByKeyword(keyword);
+        if(products.isEmpty()) {
+            throw new AppException(ErrorCode.PRODUCT_NOT_FOUND);
+        }
+        return products;
+    }
+
+
     public ProductResponse changeProductStatus(String productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));

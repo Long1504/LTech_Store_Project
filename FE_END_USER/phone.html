@@ -228,55 +228,17 @@
               <h3 class="widget-title">Thương hiệu</h3>
 
               <div class="brand-filter-content">
-
                 <div class="brand-list">
                   <div class="brand-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="brand1">
-                      <label class="form-check-label" for="brand1">
-                        Apple
-                        <span class="brand-count">(24)</span>
-                      </label>
+                      <label class="form-check-label" for="brand1">Apple</label>
                     </div>
                   </div>
-
                   <div class="brand-item">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="brand2">
-                      <label class="form-check-label" for="brand2">
-                        Samsung
-                        <span class="brand-count">(18)</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="brand-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="brand3">
-                      <label class="form-check-label" for="brand3">
-                        Oppo
-                        <span class="brand-count">(12)</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="brand-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="brand4">
-                      <label class="form-check-label" for="brand4">
-                        Realme
-                        <span class="brand-count">(9)</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="brand-item">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="brand5">
-                      <label class="form-check-label" for="brand5">
-                        Vivo
-                        <span class="brand-count">(7)</span>
-                      </label>
+                      <label class="form-check-label" for="brand2">Samsung</label>
                     </div>
                   </div>
                 </div>
@@ -462,49 +424,6 @@
                     </div>
                   </div>
                 </div> -->
-                <script>
-                  const productList = document.getElementById("product-list");
-
-                  fetch("http://localhost:8080/tech-store/api/products/phones")
-                    .then(response => response.json())
-                    .then(data => {
-                      const products = data.result;
-
-                      products.forEach(p => {
-                        productList.innerHTML += `
-                              <div class="col-6 col-xl-3">
-                                <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
-                                  <div class="product-image">
-                                    <img src="${p.imageURL}" class="main-image img-fluid" alt="${p.productName}">
-                                    <div class="product-overlay">
-                                      <div class="product-actions">
-                                        <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Quick View">
-                                          <i class="bi bi-eye"></i>
-                                        </button>
-                                        <button type="button" class="action-btn" data-bs-toggle="tooltip" title="Add to Cart" onclick="addToCart('${p.productId}')">
-                                          <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="product-details">
-                                      <div class="brand-name">${p.brandName}</div>
-                                      <h4 class="product-name"><a href="product-details.html?productId=${p.productId}">${p.productName}</a></h4>
-                                      <div class="promotional-price mb-3">
-                                          ${p.promotionalPrice.toLocaleString('vi-VN')}đ
-                                          <span class="original-price">${p.originalPrice.toLocaleString('vi-VN')}đ</span>
-                                      </div>
-                                      <div class="product-rating">
-                                          <i class="bi bi-star-fill"></i>
-                                          4.9 <span>(56)</span>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>`;
-                      });
-                    })
-                    .catch(error => console.error("Lỗi lấy danh sách sản phẩm:", error));
-                </script>
               </div>
               
               </div>
@@ -701,6 +620,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom JS -->
+  <script src="assets/js/product-overview-by-category.js"></script>
 
 </body>
 

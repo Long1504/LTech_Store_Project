@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Checkout - NiceShop Bootstrap Template</title>
+  <title>Đặt hàng</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -59,9 +59,9 @@
                 }
               </script>
               <div class="swiper-wrapper">
-                <div class="swiper-slide">🚚 Miễn phí vận chuyển cho đơn hàng trên 500.000đ</div>
-                <div class="swiper-slide">💰 Chính sách hoàn tiền trong 30 ngày</div>
-                <div class="swiper-slide">🎁 Ưu đãi 20% cho đơn hàng đầu tiên</div>
+                <div class="swiper-slide">🚚 Miễn phí vận chuyển</div>
+                <div class="swiper-slide">💰 Hoàn hàng miễn phí trong 30 ngày</div>
+                <div class="swiper-slide">👩‍💼 Nhân viên hỗ trợ 24/7</div>
               </div>
             </div>
           </div>
@@ -76,15 +76,13 @@
 
           <!-- Logo -->
           <a href="index.html" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">LTECH STORE</h1>
           </a>
 
           <!-- Search -->
           <form class="search-form desktop-search-form">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
               <button class="btn" type="submit">
                 <i class="bi bi-search"></i>
               </button>
@@ -109,27 +107,16 @@
                   <h6>Chào mừng tới <span class="sitename">LTech Store</span></h6>
                   <p class="mb-0">Truy cập tài khoản &amp; Quản lý đơn hàng</p>
                 </div>
-                <div class="dropdown-body">
+                <div class="dropdown-body pt-1 pb-1">
                   <a class="dropdown-item d-flex align-items-center" href="account.html">
                     <i class="bi bi-person-circle me-2"></i>
-                    <span>Hồ sơ</span>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-bag-check me-2"></i>
-                    <span>Đơn hàng</span>
-                  </a>
-                  <!-- <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-heart me-2"></i>
-                    <span>Yêu thích</span>
-                  </a> -->
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-gear me-2"></i>
-                    <span>Cài đặt</span>
+                    <span>Tài khoản</span>
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="register.html" class="btn btn-primary w-100 mb-2">Đăng ký</a>
-                  <a href="login.html" class="btn btn-outline-primary w-100">Đăng nhập</a>
+                  <a href="register.html" class="btn btn-primary w-100 mb-2" id="btnRegister">Đăng ký</a>
+                  <a href="login.html" class="btn btn-outline-primary w-100" id="btnLogin">Đăng nhập</a>
+                  <a href="" class="btn btn-outline-primary w-100 logout-link" id="btnLogout">Đăng xuất</a>
                 </div>
               </div>
             </div>
@@ -137,7 +124,7 @@
             <!-- Cart -->
             <a href="cart.html" class="header-action-btn">
               <i class="bi bi-cart3"></i>
-              <span class="badge">3</span>
+              <span class="badge">0</span>
             </a>
 
             <!-- Mobile Navigation Toggle -->
@@ -154,21 +141,14 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="index.html" class="active">Trang chủ</a></li>
-            <li><a href="category.html">Danh mục</a></li>
-            <li class="dropdown"><a href="#"><span>Sản phẩm</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li><a href="product-overview-by-category.html?category=phones">Điện thoại</a></li>
+            <li><a href="product-overview-by-category.html?category=laptops">Laptop</a></li>
+            <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Điện thoại</a></li>
-                <li><a href="#">Máy tính bảng</a></li>
-                <li><a href="#">Laptop</a></li>
-                <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Tai nghe</a></li>
-                    <li><a href="#">Củ sạc</a></li>
-                    <li><a href="#">Cáp sạc</a></li>
-                    <li><a href="#">Bàn phím</a></li>
-                    <li><a href="#">Chuột</a></li>
-                  </ul>
-                </li>
+                <li><a href="product-overview-by-category.html?category=charging-adapters">Củ sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-cables">Cáp sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=mouses">Chuột</a></li>
+                <li><a href="product-overview-by-category.html?category=keyboards">Bàn phím</a></li>
               </ul>
             </li>
 
@@ -620,6 +600,10 @@
 
   <!-- Custom JS -->
   <script src="assets/js/checkout.js"></script>
+
+  <!-- Custom JS -->
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/logout.js"></script>
 
 </body>
 
