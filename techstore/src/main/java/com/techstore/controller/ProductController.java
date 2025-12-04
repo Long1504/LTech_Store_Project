@@ -102,6 +102,13 @@ public class ProductController {
                 .build();
     }
 
+    @GetMapping("/latest")
+    public ApiResponse<List<ProductOverviewResponse>> getTop4LatestProductOverviews() {
+        return ApiResponse.<List<ProductOverviewResponse>>builder()
+                .result(productService.getTop4LatestProductOverviews())
+                .build();
+    }
+
     @PutMapping("/{productId}/status")
     public ApiResponse<ProductResponse> changeProductStatus(@PathVariable String productId) {
         return ApiResponse.<ProductResponse>builder()

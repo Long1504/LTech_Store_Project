@@ -243,12 +243,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("add-to-cart-btn")
     .addEventListener("click", function () {
+      const token = localStorage.getItem("token");
+
+      // Nếu chưa đăng nhập -> hiển thị modal
+      if (!token) {
+        const loginModal = new bootstrap.Modal(
+          document.getElementById("loginModal")
+        );
+        loginModal.show();
+        return;
+      }
+
+      // Nếu đã đăng nhập -> gọi API
       const productVariantId = selectedVariant.productVariantId;
       const quantity = parseInt(
         document.querySelector(".quantity-input").value
       );
-
-      const token = localStorage.getItem("token");
 
       fetch("http://localhost:8080/tech-store/api/cart-item", {
         method: "POST",
@@ -265,11 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((data) => {
           console.log("Thêm vào giỏ thành công:", data);
 
-          // Cập nhật hiển thị số lượng giỏ hàng nếu frontend đang hiển thị badge
+          // Cập nhật badge giỏ hàng
           const badge = document.querySelector(".header-action-btn .badge");
-          if (badge) {
-            badge.textContent = data.totalQuantity; // backend trả về tổng số sp trong giỏ
-          }
+          if (badge) badge.textContent = data.totalQuantity;
 
           alert("Đã thêm vào giỏ hàng!");
         })

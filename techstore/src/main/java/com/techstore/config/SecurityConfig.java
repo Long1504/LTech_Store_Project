@@ -42,8 +42,10 @@ public class SecurityConfig {
             "/api/products/mouses",
             "/api/products/keyboards",
             "/api/products/search",
+            "/api/products/latest",
             "/api/brands",
-            "/api/carts/cart-item-count"
+            "/api/carts/cart-item-count",
+            "/api/discounts/customer"
     };
 
     private final String[] ADMIN_ENDPOINTS = {

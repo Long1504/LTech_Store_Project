@@ -95,7 +95,8 @@
           <div class="header-actions d-flex align-items-center justify-content-end">
 
             <!-- Mobile Search Toggle -->
-            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
+            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
               <i class="bi bi-search"></i>
             </button>
 
@@ -145,7 +146,8 @@
             <li><a href="index.html" class="active">Trang chủ</a></li>
             <li><a href="product-overview-by-category.html?category=phones">Điện thoại</a></li>
             <li><a href="product-overview-by-category.html?category=laptops">Laptop</a></li>
-            <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="product-overview-by-category.html?category=charging-adapters">Củ sạc</a></li>
                 <li><a href="product-overview-by-category.html?category=charging-cables">Cáp sạc</a></li>
@@ -154,7 +156,8 @@
               </ul>
             </li>
 
-            <li class="dropdown"><a href="#"><span>Thương hiệu</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Thương hiệu</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Apple</a></li>
                 <li><a href="#">Samsung</a></li>
@@ -218,15 +221,15 @@
                   <img
                     src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png"
                     alt="Product Main" class="img-fluid main-product-image" id="main-product-image">
-                  </div>
-                  <div class="image-navigation">
-                    <button class="nav-arrow prev-image image-nav-btn prev-image" type="button">
-                      <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="nav-arrow next-image image-nav-btn next-image" type="button">
-                      <i class="bi bi-chevron-right"></i>
-                    </button>
-                  </div>
+                </div>
+                <div class="image-navigation">
+                  <button class="nav-arrow prev-image image-nav-btn prev-image" type="button">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <button class="nav-arrow next-image image-nav-btn next-image" type="button">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </div>
               </div>
 
               <div class="thumbnail-grid">
@@ -263,8 +266,8 @@
                   <span class="regular-price" id="original-price"></span>
                 </div>
               </div>
-              
-              
+
+
               <!-- Phiên bản -->
               <div class="mb-4" id="version-section">
                 <h6 class="fw-bold">Phiên bản</h6>
@@ -272,12 +275,12 @@
                   <!-- Gen các phiên bản -->
                 </div>
               </div>
-              
-              
+
+
               <!-- Màu sắc -->
               <div class="mb-4" id="color-section">
                 <h6 class="fw-bold">Màu sắc</h6>
-                <div class="d-flex flex-wrap gap-2" id="variant-container"> 
+                <div class="d-flex flex-wrap gap-2" id="variant-container">
                   <!-- <div class="col-6 col-md-3">
                     <button class="variant-option text-start w-100 d-flex align-items-center p-2" onclick="selectColor(this)">
                       <img
@@ -322,13 +325,25 @@
                     <i class="bi bi-bag-plus"></i>
                     Thêm vào giỏ
                   </button>
-                  <!-- <button class="btn secondary-action">
-                    <i class="bi bi-lightning"></i>
-                    Mua ngay
-                  </button> -->
-                  <!-- <button class="btn icon-action" title="Add to Wishlist">
-                    <i class="bi bi-heart"></i>
-                  </button> -->
+                </div>
+
+                <!-- Modal yêu cầu đăng nhập -->
+                <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Vui lòng đăng nhập vào tài khoản</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.
+                      </div>
+                      <div class="modal-footer">
+                        <a href="register.html" class="btn btn-dark">Đăng ký</a>
+                        <a href="login.html" class="btn btn-outline-dark">Đăng nhập</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -360,8 +375,8 @@
           <div class="col-12">
             <div class="info-tabs-container">
               <nav class="tabs-navigation nav">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#ecommerce-product-details-5-technical"
-                  type="button">Thông số kỹ thuật</button>
+                <button class="nav-link active" data-bs-toggle="tab"
+                  data-bs-target="#ecommerce-product-details-5-technical" type="button">Thông số kỹ thuật</button>
                 <button class="nav-link" data-bs-toggle="tab"
                   data-bs-target="#ecommerce-product-details-5-customer-reviews" type="button">Đánh giá (127)</button>
               </nav>
@@ -632,7 +647,7 @@
   <script src="assets/js/header.js"></script>
   <script src="assets/js/logout.js"></script>
 
-  
-  </body>
-  
-  </html>
+
+</body>
+
+</html>

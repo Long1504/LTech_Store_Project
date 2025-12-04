@@ -1857,13 +1857,13 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  padding-top: 50px;
+  padding-top: 100px;
   background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--accent-color), transparent 95%) 100%);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 .hero::before {
@@ -2313,7 +2313,7 @@ section,
   position: relative;
   z-index: 2;
   padding: 50px;
-  max-width: 55%;
+  max-width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -2657,7 +2657,8 @@ section,
 }
 
 .best-sellers .product-info {
-  padding: 30px 20px 25px;
+  padding: 24px;
+  padding-bottom: 0;
 }
 
 .best-sellers .brand-name {
@@ -2671,10 +2672,10 @@ section,
 
 .best-sellers .product-name {
   font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.4;
-  margin-bottom: 12px;
-  height: 2.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  /* height: 2.8rem; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -2693,7 +2694,7 @@ section,
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .best-sellers .stars {
@@ -3083,6 +3084,7 @@ section,
 
 .call-to-action .main-content {
   padding: 60px 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 768px) {
@@ -3328,7 +3330,7 @@ section,
   box-shadow: 0 10px 40px color-mix(in srgb, var(--default-color), transparent 92%);
   transition: all 0.3s ease;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 95%);
-  height: 100%;
+  /* height: 100%; */
 }
 
 .call-to-action .product-showcase:hover {

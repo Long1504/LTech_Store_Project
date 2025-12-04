@@ -1,9 +1,11 @@
 package com.techstore.service;
 
 import com.techstore.dto.response.ApplyDiscountResponse;
+import com.techstore.dto.response.DiscountResponse;
 import com.techstore.entity.Discount;
 import com.techstore.exception.AppException;
 import com.techstore.exception.ErrorCode;
+import com.techstore.mapper.DiscountMapper;
 import com.techstore.repository.DiscountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class DiscountService {
     private final DiscountRepository discountRepository;
 
+    private final DiscountMapper discountMapper;
 
+    public List<DiscountResponse> getAllDiscountsForCustomer() {
+        LocalDate today = LocalDate.now();
+
+        List<Discount> discounts = discountRepository.findAll();
+
+        return discounts.stream()
+                .filter(discount -> Boolean.TRUE.equals(discount.getIsActive()))
+                .filter(discount -> !today.isBefore(discount.getStartDate()))
+                .filter(discount -> !today.isAfter(discount.getEndDate()))
+                .map(discountMapper::toDiscountResponse)
+                .toList();
+    }
 
     public ApplyDiscountResponse applyDiscount(String discountCode, BigDecimal cartTotal) {
         Discount discount = discountRepository.findByCode(discountCode)

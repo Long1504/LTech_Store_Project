@@ -17,6 +17,7 @@ import com.techstore.repository.BrandRepository;
 import com.techstore.repository.CategoryRepository;
 import com.techstore.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -91,6 +92,13 @@ public class ProductService {
 
     public List<ProductOverviewResponse> getAllProductOverviews(String categoryName, String brandName) {
         List<ProductOverviewResponse> products = productRepository.findAllProductOverviews(categoryName, brandName);
+        if(products.isEmpty())
+            throw new AppException(ErrorCode.PRODUCT_NOT_FOUND);
+        return products;
+    }
+
+    public List<ProductOverviewResponse> getTop4LatestProductOverviews() {
+        List<ProductOverviewResponse> products = productRepository.findTop4LatestProductOverviews(PageRequest.of(0, 8));
         if(products.isEmpty())
             throw new AppException(ErrorCode.PRODUCT_NOT_FOUND);
         return products;
