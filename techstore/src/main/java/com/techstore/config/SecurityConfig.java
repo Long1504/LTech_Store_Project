@@ -57,8 +57,22 @@ public class SecurityConfig {
             "/api/payments/**"
     };
 
+    private final String[] ADMIN_ENDPOINTS_POST = {
+            "/api/discounts"
+    };
+
+    private final String[] ADMIN_ENDPOINTS_GET = {
+            "/api/discounts"
+    };
+
+    private final String[] ADMIN_ENDPOINTS_PUT = {
+            "/api/discounts/*/status",
+            "/api/discounts/*"
+    };
+
     private final String[] ADMIN_ENDPOINTS_DELETE = {
-            "/api/products/**"
+            "/api/products/*",
+            "/api/discounts/*"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_POST = {
@@ -94,6 +108,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS_POST).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_ENDPOINTS_GET).permitAll()
                         .requestMatchers(ADMIN_ENDPOINTS).hasRole(RoleName.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, ADMIN_ENDPOINTS_POST).hasRole(RoleName.ADMIN.name())
+                        .requestMatchers(HttpMethod.GET, ADMIN_ENDPOINTS_GET).hasRole(RoleName.ADMIN.name())
+                        .requestMatchers(HttpMethod.PUT, ADMIN_ENDPOINTS_PUT).hasRole(RoleName.ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE, ADMIN_ENDPOINTS_DELETE).hasRole(RoleName.ADMIN.name())
                         .requestMatchers(HttpMethod.POST, CUSTOMER_ENDPOINTS_POST).hasRole(RoleName.CUSTOMER.name())
                         .requestMatchers(HttpMethod.GET, CUSTOMER_ENDPOINTS_GET).hasRole(RoleName.CUSTOMER.name())

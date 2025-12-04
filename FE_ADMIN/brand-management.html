@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Quản lý đơn hàng</title>
+  <title>Quản lý thương hiệu</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -135,7 +135,14 @@
       </li><!-- End Customer Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="category-management.html">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-person"></i>
+          <span>Nhân viên</span>
+        </a>
+      </li><!-- End Staff Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="category.html">
           <i class="bi bi-stickies"></i>
           <span>Danh mục</span>
         </a>
@@ -149,14 +156,14 @@
       </li><!-- End Brand Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="product-management.html">
+        <a class="nav-link" href="index.html">
           <i class="bi bi-inboxes"></i>
           <span>Sản phẩm</span>
         </a>
       </li><!-- End Product Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="order-management.html">
+        <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-box-seam"></i>
           <span>Đơn hàng</span>
         </a>
@@ -183,11 +190,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle d-flex justify-content-between">
-      <h1>Đơn hàng</h1>
+      <h1>Sản phẩm</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Đơn hàng</li>
+          <li class="breadcrumb-item active">Sản phẩm</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -201,74 +208,63 @@
             <div class="card-body">
 
               <div class="mt-4 mb-3 d-flex justify-content-between">
-                <div class="filter-order-status-container me-3">
-                  <span>Trạng thái đơn hàng: </span>
-                  <select name="filter-order-status" id="filter-order-status">
-                    <option value="">Tất cả</option>
-                    <option value="PENDING">Đang xử lý</option>
-                    <option value="CONFIRMED">Đã xác nhận</option>
-                    <option value="SHIPPED">Đã vận chuyển</option>
-                    <option value="CANCELLED">Đã hủy</option>
-                    <option value="COMPLETED">Đã hoàn thành</option>
-                  </select>
+                <div></div>
+                <div>
+                  <a class="btn btn-sm btn-success">
+                    <i class="bi bi-plus-circle me-2"></i>Thêm thương hiệu
+                  </a>
                 </div>
               </div>
 
-              <table class="table table-hover small" id="orders-table">
+
+              <table class="table table-hover" id="products-table">
                 <thead>
                   <tr>
-                    <th>Mã đơn hàng</th>
-                    <th>Thời gian đặt</th>
-                    <th>Tổng tiền</th>
-                    <th>Người nhận</th>
-                    <th>SĐT</th>
-                    <th>Phương thức TT</th>
-                    <th>Trạng thái TT</th>
-                    <th>Trạng thái ĐH</th>
-                    <th></th>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Danh mục</th>
+                    <th>Thương hiệu</th>
+                    <th>Thời gian bảo hành</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="align-middle">ORD-29112025161013283</td>
-                    <td class="align-middle">15/04/2025</td>
-                    <td class="align-middle">15.000.000đ</td>
-                    <td class="align-middle">Phạm Việt Long</td>
-                    <td class="align-middle">0123456789</td>
-                    <td class="align-middle">Thanh toán khi nhận hàng</td>
+                    <td><img
+                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png"
+                        alt="iPhone 16 Pro Max" style="max-height: 70px;"></td>
+                    <td class="align-middle">iPhone 16 Pro Max</td>
+                    <td class="align-middle">Điện thoại</td>
+                    <td class="align-middle">Apple</td>
+                    <td class="align-middle">24 tháng</td>
+                    <td class="align-middle">Hoạt động</td>
                     <td class="align-middle">
-                      <select name="payment-status" id="payment-status">
-                        <option value="PENDING">Đang xử lý</option>
-                        <option value="PAID">Đã thanh toán</option>
-                      </select>
-                    </td>
-                    <td class="align-middle">
-                      <select name="order-status" id="order-status">
-                        <option value="PENDING">Đang xử lý</option>
-                        <option value="CONFIRMED">Đã xác nhận</option>
-                        <option value="SHIPPED">Đã vận chuyển</option>
-                        <option value="CANCELLED">Đã hủy</option>
-                        <option value="COMPLETED">Đã hoàn thành</option>
-                      </select>
+                      <button class="btn btn-sm btn-warning text-white"><i class="bx bxs-lock"></i></button>
+                      <!-- <button class="btn btn-sm btn-warning text-white"><i class="bx bxs-lock-open"></i></button> -->
+                      <button class="btn btn-sm btn-primary text-white"><i class="bi bi-pencil-square"></i></button>
+                      <button class="btn btn-sm btn-danger text-white"><i class="bx bx-trash"></i></button>
                     </td>
                   </tr>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
 
-              <!-- Order Detail Popup Modal -->
-              <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
+              <!-- Delete Confirmation Modal -->
+              <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Chi tiết đơn hàng</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <div class="modal-header bg-danger text-white">
+                      <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div id="order-detail-content"></div>
+                      Bạn có chắc chắn muốn xóa sản phẩm này không?
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                      <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
                     </div>
                   </div>
                 </div>
@@ -315,7 +311,7 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS -->
-  <script src="assets/js/order-management.js"></script>
+  <!-- <script src="assets/js/product-management.js"></script> -->
 
 
 </body>

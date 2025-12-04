@@ -51,6 +51,8 @@ public enum ErrorCode {
     //Discount
     DISCOUNT_NOT_EXISTED(7222, "Mã giảm giá không tồn tại", HttpStatus.NOT_FOUND),
     DISCOUNT_INVALID(7333, "Mã giảm giá không hợp lệ", HttpStatus.CONFLICT),
+    DISCOUNT_CODE_EXISTED(7214, "Mã giảm giá đã tồn tại", HttpStatus.CONFLICT),
+    DISCOUNT_DATE_INVALID(7154, "Mã giảm giá có thời gian không hợp lệ", HttpStatus.CONFLICT),
 
     //Order
     ORDER_NOT_EXISTED(7444, "Đơn hàng không tồn tại", HttpStatus.NOT_FOUND),
