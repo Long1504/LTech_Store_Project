@@ -64,13 +64,15 @@ public class SecurityConfig {
 
     private final String[] ADMIN_ENDPOINTS_GET = {
             "/api/discounts",
-            "/api/brands"
+            "/api/brands",
+            "/api/reports/**"
     };
 
     private final String[] ADMIN_ENDPOINTS_PUT = {
             "/api/discounts/*/status",
             "/api/discounts/*",
-            "/api/brands/*"
+            "/api/brands/*",
+            "/api/users/password"
     };
 
     private final String[] ADMIN_ENDPOINTS_DELETE = {

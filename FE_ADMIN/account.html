@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Quản lý khách hàng</title>
+  <title>Users / Profile - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -81,14 +81,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>Tổng quan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="customer-management.html">
+        <a class="nav-link collapsed" href="customer-management.html">
           <i class="bi bi-people"></i>
           <span>Khách hàng</span>
         </a>
@@ -130,62 +130,92 @@
   <main id="main" class="main">
 
     <div class="pagetitle d-flex justify-content-between">
-      <h1>Khách hàng</h1>
+      <h1>Tài khoản</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Khách hàng</li>
+          <li class="breadcrumb-item active">Tài khoản</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section dashboard">
+    <section class="section profile">
       <div class="row">
+        <div class="col-xl-3">
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              <img src="assets/img/avt-profile.jpg" alt="Profile" class="rounded-circle mb-2">
+              <h2 class="fs-5 mb-2">Tài khoản quản trị</h2>
+              <i class="bi bi-shield-lock fs-4 text-primary"></i>
+            </div>
+          </div>
+        </div>
 
-        <div class="col-lg-12">
+        <div class="col-xl-9">
 
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Danh sách khách hàng</h5>
-              <!-- Table with stripped rows -->
-              <table class="table table-hover" id="customers-table">
-                <thead>
-                  <tr>
-                    <th>Tên đăng nhập</th>
-                    <th>Họ</th>
-                    <th>Tên</th>
-                    <th>Giới tính</th>
-                    <th data-type="date" data-format="DD/MM/YYYY">Ngày sinh</th>
-                    <th>Email</th>
-                    <th>Số điện thoại</th>
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>longpham</td>
-                    <td>Phạm Việt</td>
-                    <td>Long</td>
-                    <td>Nam</td>
-                    <td>15/04/2004</td>
-                    <td>pvl@gmail.com</td>
-                    <td>0123456789</td>
-                    <td>Hoạt động</td>
-                    <td>
-                      <button class="btn btn-sm btn-warning text-white"><i class="bx bxs-lock"></i></button>
-                      <!-- <button class="btn btn-sm btn-warning text-white"><i class="bx bxs-lock-open"></i></button> -->
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng quan</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">Tổng quan</h5>
+                  <p class="small fst-italic">Tài khoản dành cho việc quản trị hệ thống LTECH STORE</p>
+                  <h5 class="card-title">Thông tin</h5>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Cửa hàng</div>
+                    <div class="col-lg-9 col-md-8">LTech</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Quyền</div>
+                    <div class="col-lg-9 col-md-8">Quản trị viên (ADMIN)</div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <form>
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu hiện tại</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="currentPassword" required>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword" required minlength="8" maxlength="20" pattern="^.{8,20}$" autocomplete="new-password" title="Mật khẩu phải có từ 8 đến 20 ký tự.">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Nhập lại mật khẩu mới</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="renewpassword" type="password" class="form-control" id="renewPassword" required minlength="8" maxlength="20" pattern="^.{8,20}$" autocomplete="new-password" title="Mật khẩu phải có từ 8 đến 20 ký tự.">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
 
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
 
@@ -221,9 +251,10 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Custom JS -->
-  <script src="assets/js/customer-management.js"></script>
+  <script src="assets/js/change-password.js"></script>
 
   <script src="assets/js/logout.js"></script>
+
 </body>
 
 </html>
