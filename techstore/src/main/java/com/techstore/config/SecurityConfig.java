@@ -58,21 +58,25 @@ public class SecurityConfig {
     };
 
     private final String[] ADMIN_ENDPOINTS_POST = {
-            "/api/discounts"
+            "/api/discounts",
+            "/api/brands"
     };
 
     private final String[] ADMIN_ENDPOINTS_GET = {
-            "/api/discounts"
+            "/api/discounts",
+            "/api/brands"
     };
 
     private final String[] ADMIN_ENDPOINTS_PUT = {
             "/api/discounts/*/status",
-            "/api/discounts/*"
+            "/api/discounts/*",
+            "/api/brands/*"
     };
 
     private final String[] ADMIN_ENDPOINTS_DELETE = {
             "/api/products/*",
-            "/api/discounts/*"
+            "/api/discounts/*",
+            "/api/brands/*"
     };
 
     private final String[] CUSTOMER_ENDPOINTS_POST = {

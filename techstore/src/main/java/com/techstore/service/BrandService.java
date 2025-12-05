@@ -9,6 +9,7 @@ import com.techstore.mapper.BrandMapper;
 import com.techstore.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,5 +32,27 @@ public class BrandService {
                 .stream()
                 .map(brand -> brandMapper.toBrandResponse(brand))
                 .toList();
+    }
+
+    @Transactional
+    public BrandResponse updateBrand(String brandId, BrandRequest brandRequest) {
+        Brand brand = brandRepository.findById(brandId)
+                .orElseThrow(() -> new AppException(ErrorCode.BRAND_NOT_EXISTED));
+
+        if(!brand.getBrandName().equals(brandRequest.getBrandName()) && brandRepository.existsByBrandName(brandRequest.getBrandName())) {
+            throw new AppException(ErrorCode.BRAND_EXISTED);
+        }
+
+        brand.setBrandName(brandRequest.getBrandName());
+        brandRepository.save(brand);
+        return brandMapper.toBrandResponse(brand);
+    }
+
+    @Transactional
+    public void deleteBrand(String brandId) {
+        Brand brand = brandRepository.findById(brandId)
+                .orElseThrow(() -> new AppException(ErrorCode.BRAND_NOT_EXISTED));
+
+        brandRepository.delete(brand);
     }
 }

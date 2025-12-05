@@ -18,18 +18,34 @@ import java.util.List;
 public class BrandController {
     private final BrandService brandService;
 
-    @PostMapping
+    @PostMapping()
     public ApiResponse<BrandResponse> createBrand(@RequestBody BrandRequest request) {
         return ApiResponse.<BrandResponse>builder()
-                .message("Tạo mới thương hiệu thành công!")
+                .message("Tạo mới thương hiệu thành công")
                 .result(brandService.createBrand(request))
                 .build();
     }
 
-    @GetMapping
+    @GetMapping()
     public ApiResponse<List<BrandResponse>> getAllBrands() {
         return ApiResponse.<List<BrandResponse>>builder()
                 .result(brandService.getAllBrands())
+                .build();
+    }
+
+    @PutMapping("/{brandId}")
+    public ApiResponse<BrandResponse> updateBrand(@PathVariable String brandId, @RequestBody BrandRequest request) {
+        return ApiResponse.<BrandResponse>builder()
+                .message("Cập nhật thương hiệu thành công")
+                .result(brandService.updateBrand(brandId, request))
+                .build();
+    }
+
+    @DeleteMapping("/{brandId}")
+    public ApiResponse<BrandResponse> deleteBrand(@PathVariable String brandId) {
+        brandService.deleteBrand(brandId);
+        return ApiResponse.<BrandResponse>builder()
+                .message("Xóa thương hiệu thành công")
                 .build();
     }
 }
