@@ -12,8 +12,21 @@ spring:
     password:
   jpa:
     hibernate:
-    #ddl-auto: update #Tự tạo hoặc cập nhật db khi run
+      # ddl-auto: update #Tự tạo hoặc cập nhật db khi run
     show-sql: true
+  ai:
+    openai:
+      api-key: ${GEMINI_KEY}
+      chat:
+        base-url: https://generativelanguage.googleapis.com
+        completions-path: /v1beta/openai/chat/completions
+        options:
+          model: gemini-2.0-flash
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
 
 jwt:
   signerKey: "a193e5f9c15cd8ce16e881b591e21f1a91bda4ea6a41313d4b24d07e5c466821"

@@ -30,7 +30,8 @@ public class SecurityConfig {
             "/api/users/register",
             "/api/auth/login", "/api/auth/introspect", "/api/auth/logout", "/api/auth/refresh",
             "/api/carts",
-            "/api/cart-item"
+            "/api/cart-item",
+            "/api/chats"
     };
 
     private final String[] PUBLIC_ENDPOINTS_GET = {
@@ -45,7 +46,8 @@ public class SecurityConfig {
             "/api/products/latest",
             "/api/brands",
             "/api/carts/cart-item-count",
-            "/api/discounts/customer"
+            "/api/discounts/customer",
+            "/api/chats/history"
     };
 
     private final String[] ADMIN_ENDPOINTS = {

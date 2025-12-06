@@ -1,0 +1,161 @@
+/* ===========================
+   Nút Chatbot
+=========================== */
+.chatbot-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  cursor: pointer;
+  border: none;
+  background-color: #0d6efd;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.2);
+  border-radius: 50%;
+}
+
+/* Icon lắc xoay nhẹ */
+@keyframes rotateShake {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-10deg); }
+  40%  { transform: rotate(10deg); }
+  60%  { transform: rotate(-6deg); }
+  80%  { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.chatbot-btn i {
+  animation: rotateShake 2s infinite;
+  display: inline-block;
+}
+
+/* ===========================
+   Cửa sổ Chatbot
+=========================== */
+.chatbot-window {
+  position: fixed;
+  bottom: 130px;
+  right: 25px;
+  width: 360px; /* rộng hơn một chút */
+  max-height: 420px;
+  display: none;
+  z-index: 1050;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff, #f8f9fa);
+  border: 1px solid rgba(0,0,0,0.1);
+  flex-direction: column;
+}
+
+/* Khi mở */
+.chatbot-window.show {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===========================
+   Header Chatbot
+=========================== */
+.chatbot-window .card-header {
+  background-color: #0d6efd;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* bóng nhẹ phía dưới header */
+}
+
+/* ===========================
+   Body Chatbot
+=========================== */
+.chatbot-window .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  height: 360px; /* tăng chút chiều cao */
+  background: transparent; /* để gradient của cửa sổ nổi bật */
+}
+
+/* Khu vực tin nhắn */
+.chat-messages {
+  background: #f1f3f5;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* Scrollbar đẹp */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+/* ===========================
+   Bubble tin nhắn (gradient + shadow)
+=========================== */
+.chat-message.user {
+  background: linear-gradient(135deg, #0d6efd, #3a8dff);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  margin-bottom: 0.4rem;
+  max-width: 80%;
+  align-self: flex-end;
+  word-break: break-word;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 8px rgba(13, 110, 253, 0.35);
+}
+
+.chat-message.bot {
+  background: linear-gradient(135deg, #e9ecef, #dee2e6);
+  color: #000;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  margin-bottom: 0.4rem;
+  max-width: 80%;
+  align-self: flex-start;
+  word-break: break-word;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+   Input và nút gửi
+=========================== */
+.chatbot-window .input-group {
+  margin-top: auto;
+}
+
+.chatbot-window .input-group input {
+  border-radius: 0.75rem 0 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.chatbot-window .input-group button {
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-size: 0.9rem;
+}

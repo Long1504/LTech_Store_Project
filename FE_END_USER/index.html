@@ -29,6 +29,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/chatbot.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -480,9 +481,11 @@
           <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="product-showcase">
               <div class="discount-code fw-bold text-danger">SALE2025</div>
-              <div>Giảm <span class="discount-percent fw-medium">20%</span> tối đa <span class="max-discount-amount fw-medium">500.000đ</span></div>
+              <div>Giảm <span class="discount-percent fw-medium">20%</span> tối đa <span
+                  class="max-discount-amount fw-medium">500.000đ</span></div>
               <div>Điều kiện: Đơn hàng từ <span class="min-order-amount fw-medium">1.000.000đ</span></div>
-              <div>Thời gian: <span class="start-date fw-medium">01/06/2025</span> - <span class="end-date fw-medium">10/06/2025</span></div>
+              <div>Thời gian: <span class="start-date fw-medium">01/06/2025</span> - <span
+                  class="end-date fw-medium">10/06/2025</span></div>
               <div>(Số lượng: <span class="quantity fw-medium">50</span>)</div>
             </div>
           </div>
@@ -491,6 +494,35 @@
       </div>
 
     </section><!-- /Call To Action Section -->
+
+
+    <!-- Chatbot Floating Button -->
+    <button id="chatbotToggle" class="btn btn-primary rounded-circle shadow chatbot-btn">
+      <i class="bi bi-chat-dots fs-3"></i>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="chatbotWindow" class="card shadow chatbot-window">
+      <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        Chatbot LTech
+        <button id="chatbotClose" class="btn-close btn-close-white" type="button" aria-label="Close"></button>
+      </div>
+      <div class="card-body d-flex flex-column p-2">
+        <div id="chatMessages" class="chat-messages flex-grow-1 overflow-auto mb-2 p-2 border rounded">
+          <div class="text-muted text-center small">Chatbot LTech đã sẵn sàng hỗ trợ bạn!</div>
+        </div>
+        <div class="input-group">
+          <input id="chatInput" type="text" class="form-control" placeholder="Nhập tin nhắn...">
+          <button id="sendMsg" class="btn btn-primary">
+            <i class="bi bi-send"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
 
   </main>
 
@@ -650,6 +682,7 @@
 
   <!-- Custom JS -->
   <script src="assets/js/home.js"></script>
+  <script src="assets/js/chatbot.js"></script>
 
   <script src="assets/js/header.js"></script>
   <script src="assets/js/logout.js"></script>
