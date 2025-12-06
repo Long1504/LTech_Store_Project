@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Support - NiceShop Bootstrap Template</title>
+  <title>Hỗ trợ</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -59,9 +59,9 @@
                 }
               </script>
               <div class="swiper-wrapper">
-                <div class="swiper-slide">🚚 Miễn phí vận chuyển cho đơn hàng trên 500.000đ</div>
-                <div class="swiper-slide">💰 Chính sách hoàn tiền trong 30 ngày</div>
-                <div class="swiper-slide">🎁 Ưu đãi 20% cho đơn hàng đầu tiên</div>
+                <div class="swiper-slide">🚚 Miễn phí vận chuyển</div>
+                <div class="swiper-slide">💰 Hoàn hàng miễn phí trong 30 ngày</div>
+                <div class="swiper-slide">👩‍💼 Nhân viên hỗ trợ 24/7</div>
               </div>
             </div>
           </div>
@@ -76,15 +76,13 @@
 
           <!-- Logo -->
           <a href="index.html" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">LTECH STORE</h1>
           </a>
 
           <!-- Search -->
           <form class="search-form desktop-search-form">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+              <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
               <button class="btn" type="submit">
                 <i class="bi bi-search"></i>
               </button>
@@ -95,7 +93,8 @@
           <div class="header-actions d-flex align-items-center justify-content-end">
 
             <!-- Mobile Search Toggle -->
-            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
+            <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
               <i class="bi bi-search"></i>
             </button>
 
@@ -109,27 +108,16 @@
                   <h6>Chào mừng tới <span class="sitename">LTech Store</span></h6>
                   <p class="mb-0">Truy cập tài khoản &amp; Quản lý đơn hàng</p>
                 </div>
-                <div class="dropdown-body">
+                <div class="dropdown-body pt-1 pb-1">
                   <a class="dropdown-item d-flex align-items-center" href="account.html">
                     <i class="bi bi-person-circle me-2"></i>
-                    <span>Hồ sơ</span>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-bag-check me-2"></i>
-                    <span>Đơn hàng</span>
-                  </a>
-                  <!-- <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-heart me-2"></i>
-                    <span>Yêu thích</span>
-                  </a> -->
-                  <a class="dropdown-item d-flex align-items-center" href="account.html">
-                    <i class="bi bi-gear me-2"></i>
-                    <span>Cài đặt</span>
+                    <span>Tài khoản</span>
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="register.html" class="btn btn-primary w-100 mb-2">Đăng ký</a>
-                  <a href="login.html" class="btn btn-outline-primary w-100">Đăng nhập</a>
+                  <a href="register.html" class="btn btn-primary w-100 mb-2" id="btnRegister">Đăng ký</a>
+                  <a href="login.html" class="btn btn-outline-primary w-100" id="btnLogin">Đăng nhập</a>
+                  <a href="" class="btn btn-outline-primary w-100 logout-link" id="btnLogout">Đăng xuất</a>
                 </div>
               </div>
             </div>
@@ -137,7 +125,7 @@
             <!-- Cart -->
             <a href="cart.html" class="header-action-btn">
               <i class="bi bi-cart3"></i>
-              <span class="badge">3</span>
+              <span class="badge">0</span>
             </a>
 
             <!-- Mobile Navigation Toggle -->
@@ -153,37 +141,21 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html" class="active">Trang chủ</a></li>
-            <li><a href="category.html">Danh mục</a></li>
-            <li class="dropdown"><a href="#"><span>Sản phẩm</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="product-overview-by-category.html?category=phones">Điện thoại</a></li>
+            <li><a href="product-overview-by-category.html?category=laptops">Laptop</a></li>
+            <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Điện thoại</a></li>
-                <li><a href="#">Máy tính bảng</a></li>
-                <li><a href="#">Laptop</a></li>
-                <li class="dropdown"><a href="#"><span>Phụ kiện</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Tai nghe</a></li>
-                    <li><a href="#">Củ sạc</a></li>
-                    <li><a href="#">Cáp sạc</a></li>
-                    <li><a href="#">Bàn phím</a></li>
-                    <li><a href="#">Chuột</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
-            <li class="dropdown"><a href="#"><span>Thương hiệu</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Apple</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Oppo</a></li>
-                <li><a href="#">Realme</a></li>
-                <li><a href="#">Vivo</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-adapters">Củ sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-cables">Cáp sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=mouses">Chuột</a></li>
+                <li><a href="product-overview-by-category.html?category=keyboards">Bàn phím</a></li>
               </ul>
             </li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">Giới thiệu</a></li>
-            <li><a href="support.html">Hỗ trợ</a></li>
+            <li><a href="support.html" class="active">Hỗ trợ</a></li>
             <li><a href="contact.html">Liên hệ</a></li>
 
           </ul>
@@ -212,11 +184,11 @@
     <!-- Page Title -->
     <div class="page-title light-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Support</h1>
+        <h1 class="mb-2 mb-lg-0">Hỗ trợ</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Support</li>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li class="current">Hỗ trợ</li>
           </ol>
         </nav>
       </div>
@@ -230,8 +202,8 @@
         <!-- Support Header -->
         <div class="support-header" data-aos="fade-up">
           <div class="header-content">
-            <h2>Help &amp; Support Center</h2>
-            <p>Find answers, tutorials, and help from our support team</p>
+            <h2>Trung tâm Hỗ trợ &amp; Giải đáp</h2>
+            <p>Tìm câu trả lời, hướng dẫn và nhận trợ giúp từ đội ngũ hỗ trợ của LTECH STORE</p>
           </div>
         </div>
 
@@ -240,75 +212,75 @@
           <div class="action-item live-chat">
             <div class="action-content">
               <i class="bi bi-chat-text"></i>
-              <h4>Live Chat</h4>
-              <p>Chat with our support team</p>
-              <a href="#" class="action-button">Start Chat</a>
+              <h4>Chat trực tuyến</h4>
+              <p>Trò chuyện ngay với đội ngũ hỗ trợ của chúng tôi</p>
+              <a href="#" class="action-button">Bắt đầu Chat</a>
             </div>
           </div>
 
           <div class="action-item phone">
             <div class="action-content">
               <i class="bi bi-telephone"></i>
-              <h4>Call Us</h4>
-              <p>24/7 support line</p>
-              <a href="tel:1234567890" class="action-button">+1 (555) 123-4567</a>
+              <h4>Gọi cho chúng tôi</h4>
+              <p>Đường dây hỗ trợ 24/7</p>
+              <a href="tel:1234567890" class="action-button">0376 000 333</a>
             </div>
           </div>
 
           <div class="action-item email">
             <div class="action-content">
               <i class="bi bi-envelope"></i>
-              <h4>Email Support</h4>
-              <p>Get email support</p>
-              <a href="#" class="action-button">Send Email</a>
+              <h4>Hỗ trợ email</h4>
+              <p>Gửi yêu cầu hỗ trợ qua email</p>
+              <a href="#" class="action-button">Gửi email</a>
             </div>
           </div>
         </div>
 
         <!-- Help Topics -->
         <div class="help-categories" data-aos="fade-up" data-aos-delay="200">
-          <h3>Popular Help Topics</h3>
+          <h3>Các chủ đề hỗ trợ phổ biến</h3>
           <div class="category-cards">
             <a href="#" class="category-card" data-aos="zoom-in" data-aos-delay="100">
               <span class="icon"><i class="bi bi-box-seam"></i></span>
-              <h5>Orders &amp; Shipping</h5>
+              <h5>Đơn hàng &amp; Giao hàng</h5>
               <ul>
-                <li>Track your order</li>
-                <li>Shipping methods</li>
-                <li>Returns &amp; exchanges</li>
+                <li>Theo dõi đơn hàng</li>
+                <li>Phương thức vận chuyển</li>
+                <li>Đổi trả sản phẩm</li>
               </ul>
               <span class="arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
 
             <a href="#" class="category-card" data-aos="zoom-in" data-aos-delay="200">
               <span class="icon"><i class="bi bi-wallet2"></i></span>
-              <h5>Billing &amp; Payments</h5>
+              <h5>Thanh toán &amp; Hóa đơn</h5>
               <ul>
-                <li>Payment methods</li>
-                <li>Invoices</li>
-                <li>Refund status</li>
+                <li>Phương thức thanh toán</li>
+                <li>Xem hóa đơn</li>
+                <li>Trạng thái hoàn tiền</li>
               </ul>
               <span class="arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
 
             <a href="#" class="category-card" data-aos="zoom-in" data-aos-delay="300">
               <span class="icon"><i class="bi bi-person-gear"></i></span>
-              <h5>Account Settings</h5>
+              <h5>Cài đặt tài khoản</h5>
               <ul>
-                <li>Profile management</li>
-                <li>Password reset</li>
-                <li>Privacy settings</li>
+                <li>Quản lý hồ sơ</li>
+                <li>Đổi mật khẩu</li>
+                <li>Cài đặt quyền riêng tư</li>
               </ul>
               <span class="arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
 
             <a href="#" class="category-card" data-aos="zoom-in" data-aos-delay="400">
               <span class="icon"><i class="bi bi-shield-check"></i></span>
-              <h5>Security</h5>
+              <h5>Bảo mật</h5>
               <ul>
-                <li>Account security</li>
-                <li>Two-factor auth</li>
-                <li>Privacy policy</li>
+                <li>Bảo mật tài khoản</li>
+                <li>Xác thực hai bước</li>
+                <li>Chính sách quyền riêng tư</li>
               </ul>
               <span class="arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
@@ -320,35 +292,35 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="content-box">
-                <h3>Self-Help Resources</h3>
-                <p class="subtitle">Find answers quickly with our comprehensive resources</p>
+                <h3>Nguồn hỗ trợ</h3>
+                <p class="subtitle">Tìm câu trả lời nhanh chóng với các nguồn tài liệu của chúng tôi</p>
                 <div class="resource-links">
                   <a href="#" class="resource-link">
                     <i class="bi bi-play-circle"></i>
                     <div class="link-content">
-                      <h6>Video Tutorials</h6>
-                      <p>Step-by-step video guides</p>
+                      <h6>Video hướng dẫn</h6>
+                      <p>Hướng dẫn từng bước bằng video</p>
                     </div>
                   </a>
                   <a href="#" class="resource-link">
                     <i class="bi bi-file-text"></i>
                     <div class="link-content">
-                      <h6>User Guides</h6>
-                      <p>Detailed documentation</p>
+                      <h6>Hướng dẫn sử dụng</h6>
+                      <p>Tài liệu chi tiết cho sản phẩm</p>
                     </div>
                   </a>
                   <a href="#" class="resource-link">
                     <i class="bi bi-book"></i>
                     <div class="link-content">
-                      <h6>Knowledge Base</h6>
-                      <p>Articles and tutorials</p>
+                      <h6>Kiến thức & Thủ thuật</h6>
+                      <p>Bài viết và hướng dẫn sử dụng</p>
                     </div>
                   </a>
                   <a href="#" class="resource-link">
                     <i class="bi bi-tools"></i>
                     <div class="link-content">
-                      <h6>Troubleshooting</h6>
-                      <p>Common issues and fixes</p>
+                      <h6>Khắc phục sự cố</h6>
+                      <p>Các vấn đề phổ biến và cách giải quyết</p>
                     </div>
                   </a>
                 </div>
@@ -356,35 +328,35 @@
             </div>
             <div class="col-lg-6">
               <div class="faq-section">
-                <h4>Common Questions</h4>
+                <h4>Các câu hỏi thường gặp</h4>
                 <div class="faq-list">
                   <div class="faq-item">
                     <h3>
-                      How do I track my order?
+                      Làm thế nào để theo dõi đơn hàng?
                       <i class="bi bi-plus faq-toggle"></i>
                     </h3>
                     <div class="faq-answer">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. You can track your order using your order number in the tracking section.</p>
+                      <p>Bạn có thể theo dõi đơn hàng của mình trong mục “Đơn hàng” trên website LTECH STORE.</p>
                     </div>
                   </div>
 
                   <div class="faq-item">
                     <h3>
-                      Can I change my shipping address?
+                      Tôi có thể thay đổi địa chỉ giao hàng không?
                       <i class="bi bi-plus faq-toggle"></i>
                     </h3>
                     <div class="faq-answer">
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Contact support to change your shipping address before the item ships.</p>
+                      <p>Liên hệ đội ngũ hỗ trợ của chúng tôi để thay đổi địa chỉ giao hàng trước khi sản phẩm được vận chuyển.</p>
                     </div>
                   </div>
 
                   <div class="faq-item">
                     <h3>
-                      What payment methods do you accept?
+                      LTECH STORE chấp nhận các phương thức thanh toán nào?
                       <i class="bi bi-plus faq-toggle"></i>
                     </h3>
                     <div class="faq-answer">
-                      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. We accept all major credit cards and PayPal.</p>
+                      <p>Chúng tôi chấp nhận thanh toán trực tiếp, ví điện tử, thanh toán qua ngân hàng và các hình thức thanh toán phổ biến khác.</p>
                     </div>
                   </div>
                 </div>
@@ -406,12 +378,14 @@
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget footer-about">
               <a href="index.html" class="logo">
-                <span class="sitename">NiceShop</span>
+                <span class="sitename">LTech Store</span>
               </a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula, facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
+              <p>
+                LTech Store - Chuyên bán laptop, điện thoại và phụ kiện công nghệ chất lượng.
+              </p>
 
               <div class="social-links mt-4">
-                <h5>Connect With Us</h5>
+                <h5>Liên hệ với chúng tôi</h5>
                 <div class="social-icons">
                   <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                   <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
@@ -426,108 +400,55 @@
 
           <div class="col-lg-2 col-md-6 col-sm-6">
             <div class="footer-widget">
-              <h4>Shop</h4>
+              <h4>Sản phẩm</h4>
               <ul class="footer-links">
-                <li><a href="category.html">New Arrivals</a></li>
-                <li><a href="category.html">Bestsellers</a></li>
-                <li><a href="category.html">Women's Clothing</a></li>
-                <li><a href="category.html">Men's Clothing</a></li>
-                <li><a href="category.html">Accessories</a></li>
-                <li><a href="category.html">Sale</a></li>
+                <li><a href="product-overview-by-category.html?category=phones">Điện thoại</a></li>
+                <li><a href="product-overview-by-category.html?category=laptops">Laptop</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-adapters">Củ sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=charging-cables">Cáp sạc</a></li>
+                <li><a href="product-overview-by-category.html?category=mouses">Chuột</a></li>
+                <li><a href="product-overview-by-category.html?category=keyboards">Bàn phím</a></li>
               </ul>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-6 col-sm-6">
             <div class="footer-widget">
-              <h4>Support</h4>
+              <h4>Hỗ trợ</h4>
               <ul class="footer-links">
-                <li><a href="support.html">Help Center</a></li>
-                <li><a href="account.html">Order Status</a></li>
-                <li><a href="shiping-info.html">Shipping Info</a></li>
-                <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
-                <li><a href="#">Size Guide</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="support.html">Trung tâm trợ giúp</a></li>
+                <li><a href="account.html">Tình trạng đơn hàng</a></li>
+                <li><a href="shiping-info.html">Thông tin vận chuyển</a></li>
+                <li><a href="return-policy.html">Đổi trả</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
               </ul>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h4>Contact Information</h4>
+              <h4>Thông tin liên hệ</h4>
               <div class="footer-contact">
                 <div class="contact-item">
                   <i class="bi bi-geo-alt"></i>
-                  <span>123 Fashion Street, New York, NY 10001</span>
+                  <span>111, Phố Nhổn, Quận Bắc Từ Liêm, Hà Nội</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-telephone"></i>
-                  <span>+1 (555) 123-4567</span>
+                  <span>0376 000 333</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-envelope"></i>
-                  <span>hello@example.com</span>
+                  <span>ltech@gmail.com</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-clock"></i>
-                  <span>Monday-Friday: 9am-6pm<br>Saturday: 10am-4pm<br>Sunday: Closed</span>
+                  <span>Thứ 2 - Thứ 7: 8 giờ - 18 giờ<br>Chủ nhật: Đóng cửa</span>
                 </div>
-              </div>
-
-              <div class="app-buttons mt-4">
-                <a href="#" class="app-btn">
-                  <i class="bi bi-apple"></i>
-                  <span>App Store</span>
-                </a>
-                <a href="#" class="app-btn">
-                  <i class="bi bi-google-play"></i>
-                  <span>Google Play</span>
-                </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="row gy-3 align-items-center">
-          <div class="col-lg-6 col-md-12">
-            <div class="copyright">
-              <p>© <span>Copyright</span> <strong class="sitename">NiceShop</strong>. All Rights Reserved.</p>
-            </div>
-            <div class="credits mt-1">
-              <!-- All the links in the footer should remain intact. -->
-              <!-- You can delete the links only if you've purchased the pro version. -->
-              <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-12">
-            <div class="d-flex flex-wrap justify-content-lg-end justify-content-center align-items-center gap-4">
-              <div class="payment-methods">
-                <div class="payment-icons">
-                  <i class="bi bi-credit-card" aria-label="Credit Card"></i>
-                  <i class="bi bi-paypal" aria-label="PayPal"></i>
-                  <i class="bi bi-apple" aria-label="Apple Pay"></i>
-                  <i class="bi bi-google" aria-label="Google Pay"></i>
-                  <i class="bi bi-shop" aria-label="Shop Pay"></i>
-                  <i class="bi bi-cash" aria-label="Cash on Delivery"></i>
-                </div>
-              </div>
-
-              <div class="legal-links">
-                <a href="tos.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="tos.html">Cookies</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </footer>
@@ -550,6 +471,9 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Custom JS -->
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/logout.js"></script>
 </body>
 
 </html>
