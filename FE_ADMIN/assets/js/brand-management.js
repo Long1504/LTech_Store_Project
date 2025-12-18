@@ -1,14 +1,9 @@
-// brand-management.js
-
-// Lấy token từ localStorage
 const token = localStorage.getItem('token');
 
-// Nếu không có token, chuyển về trang login
 if (!token) {
   window.location.href = '/login.html';
 }
 
-// URL API
 const apiUrl = 'http://localhost:8080/tech-store/api/brands';
 
 // Container để hiển thị brand
@@ -24,7 +19,7 @@ const editBrandModal = new bootstrap.Modal(document.getElementById('editBrandMod
 const deleteBrandModal = new bootstrap.Modal(document.getElementById('deleteBrandModal'));
 let brandIdToDelete = null;
 
-// Hàm load danh sách brand
+// Load danh sách brand
 function loadBrands() {
   fetch(apiUrl, {
     method: 'GET',
@@ -35,7 +30,7 @@ function loadBrands() {
   })
   .then(response => response.json())
   .then(data => {
-    container.innerHTML = ''; // Xóa brand cũ
+    container.innerHTML = '';
 
     data.result.forEach(brand => {
       const card = document.createElement('div');
@@ -121,7 +116,7 @@ editBrandForm.addEventListener('submit', (event) => {
   if (!brandName) return;
 
   fetch(`${apiUrl}/${brandId}`, {
-    method: 'PUT', // hoặc PATCH tùy API
+    method: 'PUT',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -165,5 +160,5 @@ document.getElementById('confirmDeleteBrandBtn').addEventListener('click', () =>
   .catch(err => console.error('Error deleting brand:', err));
 });
 
-// Load brands khi trang được tải
+
 document.addEventListener('DOMContentLoaded', loadBrands);

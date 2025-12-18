@@ -1,6 +1,4 @@
-// ======================
 // LOAD SẢN PHẨM MỚI
-// ======================
 async function loadLatestProducts() {
     try {
         const res = await fetch("http://localhost:8080/tech-store/api/products/latest");
@@ -67,11 +65,7 @@ async function loadLatestProducts() {
     }
 }
 
-
-
-// ======================
 // LOAD MÃ GIẢM GIÁ
-// ======================
 async function loadDiscountsForCustomer() {
     try {
         const res = await fetch("http://localhost:8080/tech-store/api/discounts/customer");
@@ -118,11 +112,6 @@ async function loadDiscountsForCustomer() {
     }
 }
 
-
-
-// ======================
-// GỌI HAI HÀM KHI TRANG LOAD
-// ======================
 document.addEventListener("DOMContentLoaded", () => {
     loadLatestProducts();
     loadDiscountsForCustomer();

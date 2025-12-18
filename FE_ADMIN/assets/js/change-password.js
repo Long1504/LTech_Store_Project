@@ -49,11 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (response.ok && data.code === 1000) {
         alert("Đổi mật khẩu thành công! Vui lòng đăng nhập lại.");
 
-        // Xóa token
         localStorage.removeItem("token");
 
-        // Chuyển về trang login
-        window.location.href = "/login.html"; // đổi theo đường dẫn thực tế của bạn
+        window.location.href = "/login.html";
       } else {
         alert(data.message || "Đổi mật khẩu thất bại!");
       }

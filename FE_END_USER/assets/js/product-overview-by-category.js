@@ -1,4 +1,3 @@
-// DOM Elements
 const productList = document.getElementById("product-list");
 const brandListContainer = document.getElementById("brand-list");
 const applyBrandBtn = document.querySelector(".brand-actions .btn-apply");
@@ -151,6 +150,6 @@ if (applyBrandBtn) {
 if (clearBrandBtn) {
   clearBrandBtn.addEventListener("click", () => {
     brandListContainer.querySelectorAll("input[type=checkbox]").forEach(cb => cb.checked = false);
-    applyFilters(); // render lại toàn bộ sản phẩm
+    applyFilters();
   });
 }

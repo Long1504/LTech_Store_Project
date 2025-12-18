@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
-  // ================== LOAD THÔNG TIN NGƯỜI DÙNG ==================
+  // LOAD THÔNG TIN NGƯỜI DÙNG
   async function loadUserInfo() {
     try {
       const response = await fetch(
@@ -23,13 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (result.code === 1000) {
         const user = result.result;
+        document.getElementById("fullname").textContent = `${user.lastname} ${user.firstname}`;
 
-        // Hiển thị fullname
-        document.getElementById(
-          "fullname"
-        ).textContent = `${user.lastname} ${user.firstname}`;
-
-        // Điền dữ liệu vào form thông tin cá nhân
         document.getElementById("lastname").value = user.lastname;
         document.getElementById("firstname").value = user.firstname;
         document.getElementById("dob").value = user.dateOfBirth;
@@ -47,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await loadUserInfo();
 
-  // ================== UPDATE THÔNG TIN ==================
+  // UPDATE THÔNG TIN
   const infoForm = document.querySelector(
     ".settings-section:first-of-type .settings-form"
   );
@@ -81,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (result.code === 1000) {
         alert("Cập nhật thông tin thành công!");
-        await loadUserInfo(); // load lại dữ liệu mới, bao gồm fullname
+        await loadUserInfo();
       } else {
         alert("Lỗi: " + result.message);
       }
@@ -91,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // ================== UPDATE MẬT KHẨU ==================
+  // UPDATE MẬT KHẨU
   const passwordForm = document.querySelector(
     ".settings-section[data-aos-delay='200'] .settings-form"
   );
@@ -99,15 +94,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   passwordForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const currentPassword = document
-      .getElementById("currentPassword")
-      .value.trim();
+    const currentPassword = document.getElementById("currentPassword").value.trim();
     const newPassword = document.getElementById("newPassword").value.trim();
-    const confirmPassword = document
-      .getElementById("confirmPassword")
-      .value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    // Kiểm tra confirm password
     if (newPassword !== confirmPassword) {
       alert("Xác nhận mật khẩu không khớp!");
       return;
@@ -133,8 +123,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (result.code === 1000) {
         alert("Cập nhật mật khẩu thành công! Vui lòng đăng nhập lại.");
-        localStorage.removeItem("token"); // Xóa token
-        window.location.href = "login.html"; // Chuyển về trang đăng nhập
+        localStorage.removeItem("token");
+        window.location.href = "login.html";
       } else {
         alert("Lỗi: " + result.message);
       }

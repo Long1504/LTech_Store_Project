@@ -37,13 +37,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!data) return;
   const order = data.result;
 
-  // --- Cập nhật mã đơn & ngày tạo ---
+  // Cập nhật mã đơn & ngày tạo
   const orderIdEl = document.querySelector(".order-id h4");
   const orderDateEl = document.querySelector(".order-id .order-date");
   orderIdEl.textContent = `Mã đơn: #${order.orderCode}`;
   orderDateEl.textContent = new Date(order.createdAt).toLocaleString("vi-VN");
 
-  // --- Cập nhật stepper ---
+  // Cập nhật stepper
   const stepperEls = document.querySelectorAll(".order-progress .stepper-item");
   const statusMap = {
     PENDING: 1,
@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     else if (index + 1 === currentStep) el.classList.add("current");
   });
 
-  // --- Cập nhật tóm tắt tiền ---
+  // Cập nhật tóm tắt tiền
   document.querySelector(".total-order").textContent = `${order.totalAmount.toLocaleString("vi-VN")}đ`;
   document.querySelector(".final-amount").textContent = `${order.totalAmount.toLocaleString("vi-VN")}đ`;
 
-  // --- Cập nhật thông tin giao hàng ---
+  // Cập nhật thông tin giao hàng
   const addressEl = document.querySelector("address");
   addressEl.innerHTML = `
     ${order.recipientName}<br>
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const contactEl = document.querySelector(".contact-info p");
   contactEl.innerHTML = `<i class="bi bi-telephone"></i>${order.recipientPhone}`;
 
-  // --- Cập nhật phương thức thanh toán & QR code ---
+  // Cập nhật phương thức thanh toán & QR code
   const paymentCard = document.querySelector(".payment-details-card");
 
   if (order.payment.paymentMethod === "BANK") {
@@ -99,10 +99,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     `;
   }
 
-  // --- Cập nhật danh sách sản phẩm ---
+  // Cập nhật danh sách sản phẩm
   const productsCard = document.querySelector(".order-items-details-card");
   const productsBody = productsCard.querySelector(".card-body");
-  productsBody.innerHTML = ""; // Xóa sản phẩm mặc định
+  productsBody.innerHTML = "";
 
   order.orderItems.forEach((item) => {
     const productHTML = `

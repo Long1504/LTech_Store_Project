@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // ================== LOAD DANH SÁCH ĐỊA CHỈ ==================
+  // LOAD DANH SÁCH ĐỊA CHỈ
   async function loadAddresses() {
     try {
       const response = await fetch("http://localhost:8080/tech-store/api/addresses", {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         addressesGrid.appendChild(card);
 
-        // ================== ĐẶT MẶC ĐỊNH ==================
+        // ĐẶT MẶC ĐỊNH
         const btnMakeDefault = card.querySelector(".btn-make-default");
         if (btnMakeDefault) {
           btnMakeDefault.addEventListener("click", async () => {
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         }
 
-        // ================== XÓA ĐỊA CHỈ ==================
+        // XÓA ĐỊA CHỈ
         const btnRemove = card.querySelector(".btn-remove");
         btnRemove.addEventListener("click", async () => {
           if (!confirm("Bạn có chắc chắn muốn xóa địa chỉ này?")) return;
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
 
-        // ================== SỬA ĐỊA CHỈ ==================
+        // SỬA ĐỊA CHỈ
         const btnEdit = card.querySelector(".btn-edit");
         btnEdit.addEventListener("click", () => {
           document.getElementById("editAddressId").value = addr.addressId;
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadAddresses();
 
-  // ================== THÊM ĐỊA CHỈ ==================
+  // THÊM ĐỊA CHỈ
   document.getElementById("btnAddAddress").addEventListener("click", async function () {
     const payload = {
       addressType: document.getElementById("addressType").value,
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ================== CẬP NHẬT ĐỊA CHỈ ==================
+  // CẬP NHẬT ĐỊA CHỈ
   document.getElementById("editAddressForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 

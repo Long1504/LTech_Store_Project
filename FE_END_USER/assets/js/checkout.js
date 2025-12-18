@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   let cartItems = []; // Chi tiết giỏ hàng
   let appliedDiscountCode = null;
 
-  // -----------------------
   // Lấy giỏ hàng
-  // -----------------------
   async function fetchCart() {
     try {
       const response = await fetch("http://localhost:8080/tech-store/api/carts", {
@@ -75,9 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.querySelector(".btn-price").textContent = cart.total.toLocaleString() + "đ";
   }
 
-  // -----------------------
   // Lấy địa chỉ mặc định
-  // -----------------------
   async function fetchDefaultAddress() {
     try {
       const response = await fetch("http://localhost:8080/tech-store/api/addresses/default", {
@@ -116,9 +112,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 
-  // -----------------------
   // Áp mã giảm giá
-  // -----------------------
   document.querySelector(".apply-discount-btn")?.addEventListener("click", async () => {
     const code = document.querySelector(".discount-input")?.value.trim();
     if (!code) {
@@ -159,7 +153,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       document.querySelector(".btn-price").textContent = data.finalAmount.toLocaleString() + "đ";
 
-      // **Cập nhật cartTotal bằng tổng tiền sau giảm**
+      // Cập nhật cartTotal bằng tổng tiền sau giảm
       cartTotal = data.finalAmount;
 
       alert(result.message);
@@ -170,9 +164,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // -----------------------
   // Submit đơn hàng
-  // -----------------------
   document.querySelector(".place-order-btn")?.addEventListener("click", async () => {
     const recipientName = document.querySelector("#recipientName")?.value.trim();
     const recipientPhone = document.querySelector("#recipientPhone")?.value.trim();
@@ -200,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const orderPayload = {
-      totalAmount: cartTotal, // luôn dùng tổng tiền cuối cùng
+      totalAmount: cartTotal,
       note: note,
       recipientName,
       recipientPhone,
@@ -248,9 +240,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // -----------------------
   // Thực hiện khi load
-  // -----------------------
   const defaultAddress = await fetchDefaultAddress();
   fillAddressForm(defaultAddress);
   await renderCart();

@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ================== Rating trung bình + tổng số review ==================
+  // Rating trung bình + tổng số review
   function renderRatingSummary(reviews) {
     const total = reviews.length;
     if (total === 0) {
@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (totalReviewsEl) totalReviewsEl.textContent = `(${total} khách hàng đánh giá)`;
   }
 
-  // ================== Phân phối đánh giá ==================
+  // Phân phối đánh giá
   function renderRatingDistribution(reviews) {
-    const counts = [0, 0, 0, 0, 0]; // index 0 = 1★, index 4 = 5★
+    const counts = [0, 0, 0, 0, 0];
     reviews.forEach(r => {
       if (r.rating >= 1 && r.rating <= 5) counts[r.rating - 1]++;
     });
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================== Render danh sách review ==================
+  // Render danh sách review
   function renderReviewsList(reviews) {
     if (!reviewsListEl) return;
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
-  // ================== Cập nhật số lượng review trên tab ==================
+  // Cập nhật số lượng review trên tab
   function updateReviewTabCount(totalReviews) {
     const reviewTabBtn = document.querySelector('[data-bs-target="#ecommerce-product-details-5-customer-reviews"]');
     if (reviewTabBtn) {
@@ -128,6 +128,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ================== INIT ==================
   loadReviews();
 });

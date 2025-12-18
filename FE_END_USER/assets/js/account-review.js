@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    // ===============================
-    // GLOBAL VARIABLES
-    // ===============================
     let currentReviewId = null;
     let currentRating = 0;
     let reviewIdToDelete = null;
@@ -20,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteReviewModal = new bootstrap.Modal(deleteReviewModalEl);
     const confirmDeleteBtn = document.getElementById("confirmDeleteReviewBtn");
 
-    // ===============================
-    // HELPER FUNCTIONS
-    // ===============================
     function updateStars(rating) {
         stars.forEach(star => {
             const value = parseInt(star.getAttribute("data-value"));
@@ -41,9 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return d.toLocaleString('vi-VN', { hour12: false });
     }
 
-    // ===============================
-    // STAR CLICK
-    // ===============================
+    // CHỌN SAO
     stars.forEach(star => {
         star.addEventListener("click", () => {
             currentRating = parseInt(star.getAttribute("data-value"));
@@ -51,9 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ===============================
     // LOAD MY REVIEWS
-    // ===============================
     async function loadMyReviews() {
         const token = localStorage.getItem("token");
         if (!token) return;
@@ -111,9 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).join("");
     }
 
-    // ===============================
     // CLICK REVIEW BUTTONS (Edit/Delete)
-    // ===============================
     document.body.addEventListener("click", e => {
         const target = e.target;
 
@@ -145,9 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ===============================
     // CONFIRM DELETE
-    // ===============================
     confirmDeleteBtn.addEventListener("click", async () => {
         if (!reviewIdToDelete) return;
 
@@ -173,9 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ===============================
     // SUBMIT EDIT REVIEW
-    // ===============================
     document.getElementById("submitEditReviewBtn").addEventListener("click", async () => {
         if (!currentReviewId) return;
         if (currentRating === 0) {
@@ -217,9 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Không thể cập nhật đánh giá!");
         }
     });
-
-    // ===============================
-    // INIT
-    // ===============================
+    
     loadMyReviews();
 });

@@ -1,4 +1,3 @@
-// DOM Elements
 const productList = document.getElementById("product-list");
 const brandListContainer = document.getElementById("brand-list");
 const applyBrandBtn = document.querySelector(".brand-actions .btn-apply");

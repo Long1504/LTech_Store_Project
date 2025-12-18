@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("productId");
 
-  // Elements
   const currentPage = document.querySelector(".current");
   const productNameEl = document.querySelector(".product-name");
   const categoryName = document.getElementById("category-name");

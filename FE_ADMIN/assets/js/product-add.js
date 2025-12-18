@@ -10,9 +10,7 @@ const token = localStorage.getItem("token");
 let selectedFiles = []; // lưu trữ các file đã chọn
 let currentProductId = null;
 
-// ------------------------------
 // Load Categories
-// ------------------------------
 function loadCategories() {
   const selectElement = document.getElementById("category");
 
@@ -43,9 +41,7 @@ function loadCategories() {
     .catch((err) => console.error("Lỗi load categories:", err));
 }
 
-// ------------------------------
 // Load Brands
-// ------------------------------
 function loadBrands() {
   const selectElement = document.getElementById("brand");
 
@@ -69,9 +65,7 @@ function loadBrands() {
     .catch((err) => console.error("Lỗi load brands:", err));
 }
 
-// ------------------------------
 // Preview + xóa ảnh trước khi lưu
-// ------------------------------
 function setupImagePreviewWithRemove(inputId, previewContainerId) {
   const inputFile = document.getElementById(inputId);
   const previewContainer = document.getElementById(previewContainerId);
@@ -133,9 +127,7 @@ function setupImagePreviewWithRemove(inputId, previewContainerId) {
   });
 }
 
-// ------------------------------
 // Ẩn tất cả biến thể
-// ------------------------------
 function hideAllVariants() {
   document
     .querySelectorAll(
@@ -144,9 +136,7 @@ function hideAllVariants() {
     .forEach((card) => (card.style.display = "none"));
 }
 
-// ------------------------------
 // Hiển thị biến thể theo text
-// ------------------------------
 function showVariantByText(text) {
   hideAllVariants();
   switch (text) {
@@ -173,9 +163,7 @@ function showVariantByText(text) {
   }
 }
 
-// ------------------------------
 // Setup event onchange cho category
-// ------------------------------
 function setupCategoryChange() {
   const categorySelect = document.getElementById("category");
 
@@ -185,9 +173,7 @@ function setupCategoryChange() {
   });
 }
 
-// ------------------------------
 // Lưu sản phẩm
-// ------------------------------
 async function saveProduct() {
   if (selectedFiles.length === 0) {
     alert("Vui lòng chọn ít nhất 1 ảnh!");
@@ -267,9 +253,7 @@ document
   .querySelector(".btn-save-product")
   .addEventListener("click", saveProduct);
 
-// ------------------------------
 // Lưu biến thể
-// ------------------------------
 function getVariantData(cardSelector) {
   const card = document.querySelector(cardSelector);
   if (!card) return null;
@@ -327,9 +311,7 @@ document.querySelectorAll(".btn-save-product-variant").forEach((btn) => {
   });
 });
 
-// ------------------------------
 // Load danh sách biến thể
-// ------------------------------
 async function loadProductVariants(productId) {
   const tbody = document.querySelector("#variants-table tbody");
   tbody.innerHTML = "";

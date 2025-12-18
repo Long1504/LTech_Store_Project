@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const categorySelect = document.getElementById("filter-category");
   const brandSelect = document.getElementById("filter-brand");
 
-  // ============================================
   //  LOAD DANH MỤC
-  // ============================================
   function loadCategories() {
     return fetch("http://localhost:8080/tech-store/api/categories", {
       method: "GET",
@@ -33,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((err) => console.error("Lỗi load categories:", err));
   }
 
-  // ============================================
   //  LOAD THƯƠNG HIỆU
-  // ============================================
   function loadBrands() {
     return fetch("http://localhost:8080/tech-store/api/brands", {
       method: "GET",
@@ -57,10 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((err) => console.error("Lỗi load brands:", err));
   }
 
-  // ============================================
   //  LOAD SẢN PHẨM
-  //  (PHẢI GLOBAL → GÁN VÀO window)
-  // ============================================
   window.loadProducts = function () {
     const categoryId = categorySelect.value;
     const brandId = brandSelect.value;
@@ -139,9 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
   categorySelect.addEventListener("change", loadProducts);
   brandSelect.addEventListener("change", loadProducts);
 
-  // ============================================
-  //  XÓA SẢN PHẨM (GLOBAL)
-  // ============================================
+  //  XÓA SẢN PHẨM
   let selectedProductId = null;
 
   window.deleteProduct = function (productId) {
@@ -190,10 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-  // ============================================
-  //  TOGGLE STATUS (EVENT DELEGATION)
-  // ============================================
-  // Dùng delegation để bắt click vào nút .toggle-status (button hoặc icon)
+  // TOGGLE STATUS
   document.addEventListener("click", function (event) {
     const btn = event.target.closest(".toggle-status");
     if (!btn) return;
@@ -214,7 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     })
       .then(async (res) => {
-        // nếu server trả status 204 hoặc 200/201, cố gắng parse json nếu có
         if (!res.ok) {
           let errText = "Đổi trạng thái thất bại";
           try {
@@ -226,8 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return res.json().catch(() => ({}));
       })
       .then((data) => {
-        // Chọn cách cập nhật UI: load lại cả danh sách để đồng bộ hoặc cập nhật cục bộ
-        // Ở đây gọi loadProducts() để đảm bảo dữ liệu đồng bộ
         loadProducts();
       })
       .catch((err) => {
@@ -239,16 +224,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // ============================================
   // Update Product
-  // ============================================
   window.editProduct = function (productId) {
     window.location.href = `product-update.html?productId=${productId}`;
   };
 
-  // ============================================
   //  Load Filters & Products lần đầu
-  // ============================================
   Promise.all([loadCategories(), loadBrands()]).then(() => {
     loadProducts();
   });

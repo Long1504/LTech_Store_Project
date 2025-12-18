@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".dropdown-footer .btn-outline-primary"
   );
   const logoutLink = document.querySelector(".logout-link");
-  const cartBadge = document.querySelector(".header-action-btn .badge"); // badge hiển thị số lượng
+  const cartBadge = document.querySelector(".header-action-btn .badge");
 
   // Xử lý hiển thị nút
   if (token) {

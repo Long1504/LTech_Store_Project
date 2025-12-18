@@ -1,6 +1,3 @@
-// =============================
-//  MAPPING ENUM -> UI
-// =============================
 const orderStatusMap = {
     PENDING:     { text: "Đang xử lý",  class: "processing" },
     CONFIRMED:   { text: "Đã xác nhận", class: "confirmed" },
@@ -19,9 +16,6 @@ const paymentStatusMap = {
     PAID: "Đã thanh toán"
 };
 
-// =============================
-//  HELPER FUNCTION
-// =============================
 function formatMoney(value) {
     return value.toLocaleString("vi-VN") + "đ";
 }
@@ -40,14 +34,9 @@ function formatFullDate(date) {
     return d.toLocaleString('vi-VN', options).replace(',', '');
 }
 
-// =============================
-//  GLOBAL VARIABLE
-// =============================
 let allOrders = []; // lưu toàn bộ đơn hàng fetch về
 
-// =============================
-//  FETCH VÀ RENDER ĐƠN HÀNG
-// =============================
+// FETCH VÀ RENDER ĐƠN HÀNG
 function loadMyOrders() {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -81,9 +70,7 @@ function loadMyOrders() {
     });
 }
 
-// =============================
-//  RENDER HTML ĐƠN HÀNG
-// =============================
+// RENDER HTML ĐƠN HÀNG
 function renderOrders(orders) {
     const container = document.querySelector(".orders-grid");
 
@@ -217,9 +204,7 @@ function renderOrders(orders) {
     updateOrderBadge(orders.length);
 }
 
-// =============================
-//  CẬP NHẬT BADGE SỐ ĐƠN HÀNG
-// =============================
+// CẬP NHẬT BADGE SỐ ĐƠN HÀNG
 function updateOrderBadge(count) {
     const badge = document.querySelector(".nav-link.active .badge");
     if (badge) {
@@ -227,9 +212,7 @@ function updateOrderBadge(count) {
     }
 }
 
-// =============================
-//  FILTER CLIENT-SIDE
-// =============================
+// LỌC
 function filterOrders(status) {
     if (status === "ALL") {
         renderOrders(allOrders);
@@ -239,20 +222,15 @@ function filterOrders(status) {
     }
 }
 
-// =============================
-//  RUN
-// =============================
 document.addEventListener("DOMContentLoaded", () => {
     loadMyOrders();
 
-    // Gắn sự kiện dropdown filter
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.addEventListener("click", e => {
             e.preventDefault();
             const status = item.getAttribute("data-status");
             filterOrders(status);
 
-            // Cập nhật text hiển thị trên nút
             const btn = document.querySelector(".filter-btn span");
             btn.textContent = item.textContent;
         });

@@ -3,9 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleSpan = document.querySelector("#best-selling-filter-label");
     const filterItems = document.querySelectorAll(".best-selling-filter");
 
-    // =============================
-    // Gọi API
-    // =============================
     async function fetchBestSelling(period) {
         const token = localStorage.getItem("token");
         const url = `http://localhost:8080/tech-store/api/reports/best-selling/${period}`;
@@ -25,9 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return json.result || [];
     }
 
-    // =============================
     // Render bảng
-    // =============================
     function renderTable(products) {
         tableBody.innerHTML = "";
 
@@ -53,23 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // =============================
     // Load dữ liệu
-    // =============================
     async function loadBestSelling(period, label) {
         titleSpan.innerHTML = `| ${label}`;
         const products = await fetchBestSelling(period);
         renderTable(products);
     }
 
-    // =============================
     // Load lần đầu (ngày)
-    // =============================
     loadBestSelling("daily", "Ngày");
-
-    // =============================
-    // Bắt sự kiện click filter
-    // =============================
     filterItems.forEach(item => {
         item.addEventListener("click", e => {
             e.preventDefault();

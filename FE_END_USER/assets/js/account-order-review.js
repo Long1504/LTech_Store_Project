@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Gắn sự kiện nút đánh giá (dynamic)
+    // Gắn sự kiện nút đánh giá
     document.body.addEventListener("click", e => {
         if (e.target.classList.contains("btn-review")) {
 
