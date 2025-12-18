@@ -1,6 +1,7 @@
 package com.techstore.mapper;
 
 import com.techstore.dto.request.ProductCreateRequest;
+import com.techstore.dto.request.ProductUpdateRequest;
 import com.techstore.dto.response.ProductResponse;
 import com.techstore.entity.Product;
 import org.mapstruct.Mapper;
@@ -12,6 +13,10 @@ public interface ProductMapper {
     @Mapping(target = "category", ignore = true)
     @Mapping(target = "brand", ignore = true)
     Product toProduct(ProductCreateRequest productCreateRequest);
+
+    @Mapping(target = "category", ignore = true)
+    @Mapping(target = "brand", ignore = true)
+    Product toProduct(ProductUpdateRequest productUpdateRequest);
 
     @Mapping(target = "reviews", ignore = true)
     ProductResponse toProductResponse(Product product);

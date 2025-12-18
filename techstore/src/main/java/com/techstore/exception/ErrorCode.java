@@ -23,6 +23,7 @@ public enum ErrorCode {
     INVALID_PASSWORD(2007, "Password phải có ít nhất {min} ký tự", HttpStatus.BAD_REQUEST),
     INVALID_DOB(2008, "Tuổi của bạn phải ít nhất {min}", HttpStatus.BAD_REQUEST),
     PASSWORD_INCORRECT(2009, "Mật khẩu không đúng", HttpStatus.BAD_REQUEST),
+    ACCOUNT_LOCKED(2010, "Tài khoản bị khóa", HttpStatus.NOT_FOUND),
 
     //Brand
     BRAND_EXISTED(3001, "Thương hiệu đã tồn tại", HttpStatus.CONFLICT),
@@ -37,6 +38,7 @@ public enum ErrorCode {
 
     //ProductVariant
     PRODUCT_VARIANT_NOT_FOUNT(6001, "Không tìm thấy biến thể sản phẩm", HttpStatus.NOT_FOUND),
+    PRODUCT_VARIANT_MUST_HAVE_DEFAULT(6003, "Biến thể phải có mặc định", HttpStatus.CONFLICT),
     OUT_OF_STOCK(6002, "Số lượng sản phẩm không đủ", HttpStatus.CONFLICT),
 
     //Cart

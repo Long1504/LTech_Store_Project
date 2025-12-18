@@ -1,6 +1,7 @@
 package com.techstore.controller;
 
 import com.techstore.dto.request.ProductCreateRequest;
+import com.techstore.dto.request.ProductUpdateRequest;
 import com.techstore.dto.response.ApiResponse;
 import com.techstore.dto.response.ProductOverviewResponse;
 import com.techstore.dto.response.ProductResponse;
@@ -114,6 +115,15 @@ public class ProductController {
         return ApiResponse.<ProductResponse>builder()
                 .message("Cập nhật trạng thái thành công")
                 .result(productService.changeProductStatus(productId))
+                .build();
+    }
+
+    @PutMapping("/{productId}")
+    public ApiResponse<ProductResponse> updateProduct(@PathVariable String productId,
+                                                      @RequestBody ProductUpdateRequest request) {
+        return ApiResponse.<ProductResponse>builder()
+                .message("Cập nhật sản phẩm thành công")
+                .result(productService.updateProduct(productId, request))
                 .build();
     }
 

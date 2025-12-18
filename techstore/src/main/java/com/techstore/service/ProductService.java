@@ -1,6 +1,7 @@
 package com.techstore.service;
 
 import com.techstore.dto.request.ProductCreateRequest;
+import com.techstore.dto.request.ProductUpdateRequest;
 import com.techstore.dto.response.ProductOverviewResponse;
 import com.techstore.dto.response.ProductResponse;
 import com.techstore.dto.response.ReviewResponse;
@@ -19,6 +20,7 @@ import com.techstore.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,31 @@ public class ProductService {
             Product tmp = product;
             product.getImages().forEach(img -> img.setProduct(tmp));
         }
+
+        product = productRepository.save(product);
+
+        return productMapper.toProductResponse(product);
+    }
+
+    @Transactional
+    public ProductResponse updateProduct(String productId, ProductUpdateRequest request) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+
+        product.setProductName(request.getProductName());
+
+//        Category category = categoryRepository.findById(request.getCategoryId())
+//                .orElseThrow(() -> new AppException(ErrorCode.CATEGORY_NOT_EXISTED));
+
+        Brand brand = brandRepository.findById(request.getBrandId())
+                .orElseThrow(() -> new AppException(ErrorCode.BRAND_NOT_EXISTED));
+
+//        product.setCategory(category);
+        product.setBrand(brand);
+
+        product.setWarrantyMonths(request.getWarrantyMonths());
+
+        product.setProductStatus(request.getProductStatus());
 
         product = productRepository.save(product);
 

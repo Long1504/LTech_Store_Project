@@ -74,7 +74,9 @@ public class SecurityConfig {
             "/api/discounts/*/status",
             "/api/discounts/*",
             "/api/brands/*",
-            "/api/users/password"
+            "/api/users/password",
+            "/api/products/*",
+            "/api/product-variants/*"
     };
 
     private final String[] ADMIN_ENDPOINTS_DELETE = {

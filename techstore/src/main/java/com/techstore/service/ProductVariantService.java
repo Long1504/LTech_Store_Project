@@ -2,6 +2,7 @@ package com.techstore.service;
 
 import com.techstore.dto.request.ProductSpecRequest;
 import com.techstore.dto.request.ProductVariantCreateRequest;
+import com.techstore.dto.request.ProductVariantUpdateRequest;
 import com.techstore.dto.response.ProductVariantResponse;
 import com.techstore.entity.Product;
 import com.techstore.entity.ProductSpec;
@@ -64,6 +65,59 @@ public class ProductVariantService {
         productVariant.setProductSpecs(productSpecs);
 
         productVariant = productVariantRepository.save(productVariant);
+
+        return productVariantMapper.toProductVariantResponse(productVariant);
+    }
+
+    @Transactional
+    public ProductVariantResponse updateProductVariant(String productVariantId, ProductVariantUpdateRequest request) {
+        ProductVariant productVariant = productVariantRepository.findById(productVariantId)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_VARIANT_NOT_FOUNT));
+
+        if (request.getColor() != null) {
+            productVariant.setColor(request.getColor());
+        }
+        if (request.getOriginalPrice() != null) {
+            productVariant.setOriginalPrice(request.getOriginalPrice());
+        }
+        if (request.getPromotionalPrice() != null) {
+            productVariant.setPromotionalPrice(request.getPromotionalPrice());
+        }
+        if (request.getStock() != null) {
+            productVariant.setStock(request.getStock());
+        }
+
+        if (request.getIsDefault() != null) {
+            if (request.getIsDefault()) {
+                if (!Boolean.TRUE.equals(productVariant.getIsDefault())) {
+                    productVariantRepository
+                            .findByProduct_ProductIdAndIsDefaultTrue(
+                                    productVariant.getProduct().getProductId()
+                            )
+                            .ifPresent(currentDefault -> {
+                                if (!currentDefault.getProductVariantId()
+                                        .equals(productVariant.getProductVariantId())) {
+                                    currentDefault.setIsDefault(false);
+                                }
+                            });
+                    productVariant.setIsDefault(true);
+                }
+
+            }
+        }
+
+        if(request.getProductSpecs() != null) {
+            productVariant.getProductSpecs().clear();
+            List<ProductSpec> newSpecs = new ArrayList<>();
+            for (ProductSpecRequest specRequest : request.getProductSpecs()) {
+                ProductSpec spec = productSpecMapper.toProductSpec(specRequest);
+                spec.setProductVariant(productVariant);
+                newSpecs.add(spec);
+            }
+            productVariant.getProductSpecs().addAll(newSpecs);
+        }
+
+        productVariantRepository.save(productVariant);
 
         return productVariantMapper.toProductVariantResponse(productVariant);
     }
